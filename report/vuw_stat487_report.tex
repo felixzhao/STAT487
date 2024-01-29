@@ -1,10 +1,10 @@
 \documentclass{article}
 
-\usepackage{graphicx}
+\usepackage{graphicx, amsmath}
 
 \begin{document}
 
-\title{Review of Finite Mixture Models}
+\title{Ordinal Data clustering and prediction}
 
 \author{Quan Zhao}
 
@@ -28,7 +28,40 @@
 
 % Figure~\ref{fig:trend} shows the finite mixture modelling has strong trend in publications.
 
-%
+% intro of Ordinal Data
+
+\subsection*{Ordinal Data}
+
+Ordinal data is a type of categorical data in statistics that represents categories with a meaningful order or ranking among them, but without a precise difference in the scale between each category. This type of data is distinct because, while it allows for a rank order among the values, the intervals between the values are not necessarily equal or known. This means that ordinal data can tell us about the order of categories but not about the magnitude of difference between them.
+
+Ordinal data include, Ranking data which can be sorted or ranked in order, but the distances between data points are not meaningful.
+Ordinal data often consists of labels or descriptions, though it can be coded with numbers for analysis. Even when numerical codes are used, arithmetic operations (such as addition or subtraction) are not meaningful.
+Statistical analysis of ordinal data typically involves non-parametric methods. The median and mode can be used as measures of central tendency
+
+Ordinal data is common in surveys, questionnaires, and other forms of qualitative research, where it's used to capture attitudes, opinions, preferences, and other subjective assessments that inherently have an order but not a measurable distance between categories. 
+
+Ordinal data are the most frequently encountered type of data in the social
+sciences. Survey data, in which respondents are asked to characterize their opinions
+on scales ranging from “strongly disagree” to “strongly agree,” are a common
+example of such data. For our purposes, the defining property of ordinal data
+is that there exist a clear ordering of the response categories, but no underlying
+interval scale between them. For example, it is generally reasonable to assume an
+ordering of the form
+strongly disagree < disagree < dont know < agree < strongly agree,
+but it usually does not make sense to assign integer values to these categories.
+Thus, statements of the type
+\[
+\text{``disagree''} - \text{``strongly disagree''}
+\]
+
+\[
+\text{``agree''} - \text{``don't know''}
+\]
+are not assumed. (Johnson, 2006~/cite{johnson2006ordinal})
+
+% clustering
+
+\subsection*{Ordinal Data Clustering}
 
 Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation "finite" in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
 
