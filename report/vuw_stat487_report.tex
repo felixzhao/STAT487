@@ -66,13 +66,26 @@ Thus, statements of the type
 \[
 \text{``agree''} - \text{``don't know''}
 \]
-are not assumed. (Johnson, 2006~/cite{johnson2006ordinal})
+are not assumed. (Johnson, 2006~\cite{Johnson1999})
 
-Compare with the continuous data, ordinal data bring less infomation.
+\subsection*{Difference to continuous data}
+
+In the context of statistical analysis, the distinction between ordinal and continuous data types is pivotal, influencing both the choice of analytical methods and the depth of insights that can be derived. 
+Ordinal data, characterized by its capacity to rank order categories without indicating precise differences between them, is inherently less informative than continuous data. 
+Continuous data, with its quantitative nature, allows for an infinite range of values and supports detailed statistical operations, including arithmetic calculations and the application of advanced statistical models, facilitating a nuanced understanding of variables and their interrelations (Stevens, 1946~\cite{Stevens1946}).
+
+The limitations of ordinal data stem from its inability to quantify the exact magnitude of differences between categories, a factor that restricts the application of parametric statistical methods. This constraint necessitates reliance on non-parametric methods, focusing on medians and modes rather than means and standard deviations, thereby offering a less detailed analysis (Conover, 1999~\cite{Conover1999}). 
+For instance, in Likert scale responses commonly used in surveys, the ordinal nature of data precludes meaningful calculations of averages or differences between responses, limiting the depth of analysis that can be achieved (Likert, 1932~\cite{Likert1932}).
+
+Comparatively, continuous data's capacity for precise measurement and the application of a broader range of statistical analyses enables a more detailed and accurate exploration of phenomena. This difference underscores the importance of data type consideration in research design and analysis, as it directly impacts the validity and comprehensiveness of research findings.
+
+In summary, while ordinal data is invaluable for capturing rankings and subjective assessments, its analytical limitations highlight the superior informational value of continuous data in quantitative research. This distinction is crucial for researchers in the selection of appropriate statistical methods and in the interpretation of their data, ensuring that conclusions drawn are both valid and meaningful.
 
 % clustering
 
-\subsection*{Statistical based Ordinal Data Clustering}
+\section{Statistical based Ordinal Data Clustering}
+
+\subsection{Finite Mixture modeling}
 
 Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation "finite" in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
 
