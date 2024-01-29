@@ -47,3 +47,15 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+literature_reviews/*.pdf
+*.bbl
+*.blg
+*.synctex.gz
+
+.DS_Store
+*.pdf
