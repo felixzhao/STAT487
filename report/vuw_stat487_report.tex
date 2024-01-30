@@ -125,6 +125,27 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
     \label{fig:trend} % Label for referencing the figure in the text
   \end{figure}
 
+\subsection{Proportional Odds model}
+
+The Proportional Odds model is another approach which defined for an ordinal response variable $Y$ with $J$ ordered categories ($1, 2, \ldots, J$). 
+Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
+
+\[
+\log\left(\frac{P(Y \leq j | X)}{P(Y > j | X)}\right) = \theta_j - X\beta
+\]
+
+where:
+\begin{itemize}
+    \item $P(Y \leq j | X)$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
+    \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
+    \item $X\beta$ represents the linear predictor, with $X$ being the matrix of predictor variables and $\beta$ the vector of coefficients corresponding to these variables.
+    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $X\beta$.
+\end{itemize}
+
+The Proportional Odds assumption implies that the vector of coefficients $\beta$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
+
+\section{Historical of Statistical based Ordinal Data Clustering}
+
 \subsection*{Early Developments (2000--2010)}
 
 McLachlan's 2000 paper marked a crucial step in mixture model applications by simplifying the maximum likelihood estimation (MLE) using the EM algorithm. This approach, utilizing $Y_j$ and $Z_j$, not only enhanced the computational efficiency of MLE but also laid a foundational strategy for Bayesian approaches and MCMC methods in mixture models. The paper’s impact is evident in its widespread adoption across various domains, from bioinformatics to finance, where mixture models are employed (McLachlan, 2000~\cite{mclachlan2000finite}).
