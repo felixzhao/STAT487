@@ -6,15 +6,6 @@
 
 \title{Ordinal Data clustering and prediction}
 
-
-TODO:
-
-1. add review of proportinal odds approach
-
-2. ordered stereotyp model is one of finite mixture modeling (update to review)
-
-3. add math for  these two model
-
 \author{Quan Zhao}
 
 \maketitle
@@ -124,6 +115,30 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
     From~\cite{dalmaijer2022statistical}.} % Caption for the image
     \label{fig:trend} % Label for referencing the figure in the text
   \end{figure}
+
+\subsection{Stereotype Ordered Regression Model}
+
+The Stereotype Ordered Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
+
+Given an ordinal response variable $Y$ with categories $1, 2, \ldots, J$, and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y = j | X = x)$.
+
+The cumulative probability up to the $j$th category is defined as:
+\[
+P(Y \leq j | X = x) = \sum_{k=1}^{j} P(Y = k | X = x)
+\]
+
+The cumulative logit for category $j$ is then:
+\[
+\log\left(\frac{P(Y \leq j | X = x)}{1 - P(Y \leq j | X = x)}\right) = \theta_j + \beta^T x
+\]
+where $\theta_j$ is the intercept for category $j$, and $\beta$ is a vector of coefficients for $X$.
+
+The Stereotype Model modifies the standard approach by positing:
+\[
+\beta_j = \gamma_j \beta
+\]
+for each category $j$ (except a reference category), where $\beta_j$ is the coefficient vector associated with category $j$, $\gamma_j$ is a scalar, 
+and $\beta$ is a common vector of coefficients. This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern. (Anderson, 1984~\cite{anderson1984regression})
 
 \subsection{Proportional Odds model}
 
