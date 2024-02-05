@@ -56,6 +56,8 @@ literature_reviews/*.pdf
 *.bbl
 *.blg
 *.synctex.gz
+*.bcf
+*.run.xml
 
 .DS_Store
 report/*.pdf

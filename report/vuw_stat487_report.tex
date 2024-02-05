@@ -2,6 +2,13 @@
 
 \usepackage{graphicx, amsmath}
 
+% 0. Referencing style, APA-like referencing
+\usepackage[backend=biber, style=apa, natbib=true]{biblatex}
+\addbibresource{bibliography.bib} % Replace 'yourbibfilename.bib' with your actual .bib file name.
+
+% 1.  Don't need such wide margins.
+\usepackage[margin=1in]{geometry} % Setting the margins to 1 inch
+
 \begin{document}
 
 \title{Ordinal Data clustering and prediction}
@@ -47,7 +54,7 @@ Thus, statements of the type
 \[
 \text{``agree''} - \text{``don't know''}
 \]
-are not assumed. (Johnson, 2006~\cite{Johnson1999})
+are not assumed. (Johnson, 2006~\textcite{Johnson1999})
 
 \begin{figure}[ht!] % 'h!' places the figure here, in the text
     \centering % Centers the figure
@@ -184,8 +191,9 @@ The evolution of mixture models from McLachlan's initial work in 2000 to advance
 
 Furthermore, as data complexity and volume continue to escalate, the demand for robust, efficient, and versatile mixture models is more critical than ever. Future research is expected to concentrate on scaling up these models and improving their adaptability across diverse data types and structures. This progression underscores the mixture models' indispensable role in modern data analysis, poised to address the ever-growing challenges in data science and AI.
 
-\bibliographystyle{plain}
-\bibliography{bibliography} % Replace 'yourbibfile' with the name of your .bib file
+% \bibliographystyle{apacite}
+% \bibliography{bibliography} % my .bib file
 
+\printbibliography
 
 \end{document}
