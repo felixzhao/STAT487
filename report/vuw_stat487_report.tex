@@ -19,25 +19,9 @@
 
 \maketitle
 
-% \begin{abstract}
-% \textbf{If you need an abstract, then it goes here. While you are reading this document, please also criticise it for the writing style, grammar, consistency, suitability, etc. }
-% \end{abstract}
-
-% 1. Search for relevant literature - 0:30
-% 2. Evaluate and select sources -  0:58
-% 3. Identify themes, debates, and gaps - 1:26
-% 4. Outline your literature review's structure - 1:56
-% 5. Write it - 2:34
-
 \section{Introduction}
-% introduction of the research topic
-% (1/2 to 1 page).
 
-% Finite mixture models are a flexible and powerful tool in statistical analysis, offering several key features that contribute to their widespread use in various fields.  These models assume that the observed data are generated from a combination of different probability distributions, each representing a distinct subpopulation within the overall population. The term "finite" in finite mixture models refers to the specific number of components or subpopulations in the mixture.
-
-% Figure~\ref{fig:trend} shows the finite mixture modelling has strong trend in publications.
-
-% intro of Ordinal Data
+Overall introduction, place hold.
 
 \subsection*{Ordinal Data}
 
@@ -98,11 +82,6 @@ This distinction is crucial for researchers in the selection of appropriate stat
 ensuring that conclusions drawn are both valid and meaningful.
 
 \subsection*{Clustering}
-% Task 8
-% briefly introduce the topic of clustering in
-% general. This section can be fairly short, e.g. just a few paragraphs to
-% mention what clustering is and give examples of applications and briefly
-% mention the two types of clustering (distance-based and model-based).
 
 Clustering is a fundamental technique in the field of data analysis and machine learning, aimed at grouping a set of objects in such a way that objects in the same group (or cluster) are more similar to each other than to those in other groups. Its applications span a wide range of areas including market research, pattern recognition, image analysis, and bioinformatics, among others. For instance, in market research, clustering can help identify distinct customer segments based on purchasing behavior, while in bioinformatics, it can be used to classify different types of genes or proteins with similar functions.
 
@@ -113,10 +92,6 @@ There are primarily two types of clustering: distance-based clustering and model
 2. \textbf{Model-based Clustering}: Unlike distance-based methods, model-based clustering assumes that the data is generated from a mixture of finite distributions, where each component of the mixture represents a cluster. This approach tries to estimate the parameters of these distributions to optimize the fit between the model and the data. Model-based methods are particularly useful for complex data structures, including those with mixed types of data (numerical, categorical) or where the clusters have different sizes, shapes, or orientations.
 
 Model-based clustering is often more suitable for ordinal data—data that contain natural, orderable categories. This is because ordinal data, which embody an inherent ranking or order (e.g., survey responses from "strongly agree" to "strongly disagree"), do not fit well with the distance metrics used in distance-based clustering, which treat distances between all pairs of categories as equal. Model-based clustering, on the other hand, can accommodate the ordinal nature by incorporating it into the model assumptions, allowing for a more nuanced understanding and grouping based on the inherent order of the data. This method can capture the ordinal information effectively, providing more meaningful and interpretable clusters for analysis.
-
-% Due to the limitations of distance-based clustering approaches like K Neighbors, which struggle with the non-quantitative nature of ordinal data, statistical-based clustering methods offer a more effective solution. These methods adeptly handle the ordinal data's intrinsic ranking system, bypassing the need for precise numerical distances between categories.
-
-% clustering
 
 \section{Statistical-based Ordinal Data Clustering}
 
@@ -137,11 +112,8 @@ where:
     \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\boldsymbol{\beta}^T\mathbf{X}$.
 \end{itemize}
 
-% Task 17
 The Proportional Odds assumption implies that the vector of coefficients $\boldsymbol{\beta}$ is the same across all category thresholds. (~\cite{mccullagh1980regression})
 
-
-% Task 10, move before FMM.
 \subsection{Ordered Stereotype Regression Model}
 
 The Ordered Stereotype Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
@@ -232,9 +204,6 @@ This advantage stems from two key factors: firstly, ordinal data do not presuppo
 The evolution of mixture models from McLachlan's initial work in 2000 to advanced models in 2019 showcases a field marked by dynamic growth and innovation. These models have not only solved historical challenges but also set the stage for future advancements. As the field progresses, a key focus is integrating machine learning with traditional statistical methods, enhancing the capability of mixture models to accurately predict cluster membership for new data points. This is especially relevant in artificial intelligence applications, where mixture models contribute to improved pattern recognition and decision-making.
 
 Furthermore, as data complexity and volume continue to escalate, the demand for robust, efficient, and versatile mixture models is more critical than ever. Future research is expected to concentrate on scaling up these models and improving their adaptability across diverse data types and structures. This progression underscores the mixture models' indispensable role in modern data analysis, poised to address the ever-growing challenges in data science and AI.
-
-% \bibliographystyle{apacite}
-% \bibliography{bibliography} % my .bib file
 
 \printbibliography
 
