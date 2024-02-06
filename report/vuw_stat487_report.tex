@@ -43,12 +43,22 @@
 
 Ordinal data, a pivotal concept in statistical analysis, represents categorical data characterized by a meaningful order among its categories, without implying uniform differences between these ranks. Unlike nominal data, which merely categorizes without any implied ranking, ordinal data elevates the categorical analysis by introducing a hierarchy or sequence that is significant yet lacks quantifiable intervals between its elements. This characteristic distinguishes ordinal data: it conveys the sequence of values but remains silent on the magnitude of difference between successive ranks.
 
-Such data often appear as rankings or ordered classifications where the precise distance between categories is undefined or irrelevant. Despite sometimes being numerically coded for analytical convenience, ordinal data resist traditional arithmetic operations, rendering calculations like addition or subtraction inappropriate and misleading.
+Such data often appear as rankings or ordered classifications where the precise distance between categories is undefined or irrelevant. 
+Despite sometimes being numerically coded for analytical convenience, ordinal data resist traditional arithmetic operations, rendering calculations like addition or subtraction inappropriate and misleading.
 
-In the realm of statistical analysis, ordinal data necessitates specialized, non-parametric methods. The median and mode stand out as appropriate measures of central tendency for this data types, aligning with their ordered nature without assuming equal intervals between categories.
+In the realm of statistical analysis, ordinal data necessitates specialized, non-parametric methods. 
+The median and mode stand out as appropriate measures of central tendency for this data types, 
+aligning with their ordered nature without assuming equal intervals between categories.
 
 Ordinal data's prevalence is notably high in social sciences, especially in surveys and questionnaires designed to capture subjective assessments such as attitudes, opinions, and preferences. These instruments frequently employ scales—ranging from ``strongly disagree'' to ``strongly agree''—to elicit responses that, while ordered, do not support the notion of fixed distances between adjacent categories. This principle underlines the core attribute of ordinal data: the clear hierarchy among responses without an inherent interval scale to quantify the gaps between them. Consequently, assigning numerical values to such categories for computational purposes is generally discouraged and conceptually flawed, as it misinterprets the data's ordinal nature 
-Thus, statements of the type
+
+(~\textcite{Johnson1999}) gives a good sample,
+ It is typically rational to presume an order such as
+
+ \[
+ \text{strongly disagree} < \text{disagree} < \text{don’t know} < \text{agree} < \text{strongly agree}
+\]
+ However, it is often illogical to allocate integer values to these categories. Therefore, calculations like
 \[
 \text{``disagree''} - \text{``strongly disagree''}
 \]
@@ -56,7 +66,8 @@ Thus, statements of the type
 \[
 \text{``agree''} - \text{``don't know''}
 \]
-are not assumed. (Johnson, 2006~\textcite{Johnson1999})
+are not considered valid. 
+This demonstrates that performing arithmetic calculations on the numerical values assigned to the categories does not make sense.
 
 \begin{figure}[ht!] % 'h!' places the figure here, in the text
     \centering % Centers the figure
