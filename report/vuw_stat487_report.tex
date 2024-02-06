@@ -126,15 +126,15 @@ The Proportional Odds model is another approach which defined for an ordinal res
 Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
 
 \[
-\log\left(\frac{P(Y \leq j | \mathbf{X})}{P(Y > j | \mathbf{X})}\right) = \theta_j - \mathbf{X}\boldsymbol{\beta}
+\log\left(\frac{P(Y_j \leq j | \mathbf{X})}{P(Y_j > j | \mathbf{X})}\right) = \theta_j - \boldsymbol{\beta}^T\mathbf{X}
 \]
 
 where:
 \begin{itemize}
-    \item $P(Y \leq j | \mathbf{X})$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
+    \item $P(Y_j \leq j | \mathbf{X})$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
     \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
     \item $\mathbf{X}\boldsymbol{\beta}$ represents the linear predictor, with $\mathbf{X}$ being the matrix of predictor variables and $\boldsymbol{\beta}$ the vector of coefficients corresponding to these variables.
-    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\mathbf{X}\boldsymbol{\beta}$.
+    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\boldsymbol{\beta}^T\mathbf{X}$.
 \end{itemize}
 
 The Proportional Odds assumption implies that the vector of coefficients $\boldsymbol{\beta}$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
