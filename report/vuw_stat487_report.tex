@@ -99,12 +99,32 @@ Due to the limitations of distance-based clustering approaches like K Neighbors,
 
 \section{Statistical-based Ordinal Data Clustering}
 
+\subsection{Proportional Odds model}
+
+The Proportional Odds model is another approach which defined for an ordinal response variable $Y$ with $J$ ordered categories ($j=1, 2, \ldots, J$). 
+Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
+
+\[
+\log\left(\frac{P(Y \leq j | \mathbf{X})}{P(Y > j | \mathbf{X})}\right) = \theta_j - \mathbf{X}\boldsymbol{\beta}
+\]
+
+where:
+\begin{itemize}
+    \item $P(Y \leq j | \mathbf{X})$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
+    \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
+    \item $\mathbf{X}\boldsymbol{\beta}$ represents the linear predictor, with $\mathbf{X}$ being the matrix of predictor variables and $\boldsymbol{\beta}$ the vector of coefficients corresponding to these variables.
+    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\mathbf{X}\boldsymbol{\beta}$.
+\end{itemize}
+
+The Proportional Odds assumption implies that the vector of coefficients $\boldsymbol{\beta}$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
+
+
 % Task 10, move before FMM.
-\subsection{Stereotype Ordered Regression Model}
+\subsection{Ordered Stereotype Regression Model}
 
-The Stereotype Ordered Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
+The Ordered Stereotype Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
-Given an ordinal response variable $Y$ with categories $1, 2, \ldots, J$, and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y = j | X = x)$.
+Given an ordinal response variable $Y$ with categories ($j=1, 2, \ldots, J$), and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y = j | X = x)$.
 
 The cumulative probability up to the $j$th category is defined as:
 \[
@@ -123,25 +143,6 @@ The Stereotype Model modifies the standard approach by positing:
 \]
 for each category $j$ (except a reference category), where $\beta_j$ is the coefficient vector associated with category $j$, $\gamma_j$ is a scalar, 
 and $\beta$ is a common vector of coefficients. This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern. (Anderson, 1984~\cite{anderson1984regression})
-
-\subsection{Proportional Odds model}
-
-The Proportional Odds model is another approach which defined for an ordinal response variable $Y$ with $J$ ordered categories ($1, 2, \ldots, J$). 
-Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
-
-\[
-\log\left(\frac{P(Y \leq j | \mathbf{X})}{P(Y > j | \mathbf{X})}\right) = \theta_j - \mathbf{X}\boldsymbol{\beta}
-\]
-
-where:
-\begin{itemize}
-    \item $P(Y \leq j | \mathbf{X})$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
-    \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
-    \item $\mathbf{X}\boldsymbol{\beta}$ represents the linear predictor, with $\mathbf{X}$ being the matrix of predictor variables and $\boldsymbol{\beta}$ the vector of coefficients corresponding to these variables.
-    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\mathbf{X}\boldsymbol{\beta}$.
-\end{itemize}
-
-The Proportional Odds assumption implies that the vector of coefficients $\boldsymbol{\beta}$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
 
 
 \subsection{Finite Mixture modeling}
@@ -179,7 +180,11 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
 
 \subsection*{Early Developments (2000--2010)}
 
-McLachlan's 2000 paper marked a crucial step in mixture model applications by simplifying the maximum likelihood estimation (MLE) using the EM algorithm. This approach, utilizing $Y_j$ and $Z_j$, not only enhanced the computational efficiency of MLE but also laid a foundational strategy for Bayesian approaches and MCMC methods in mixture models. The paper’s impact is evident in its widespread adoption across various domains, from bioinformatics to finance, where mixture models are employed (McLachlan, 2000~\cite{mclachlan2000finite}).
+EM algorithm has been introduced by Dempster, Laird and Rubin in 1977. (~\cite*[Dempster, Laird and Rubin]{Dempster1977}).
+
+McLachlan \& Basford 1988 (~\cite{mclachlan1988mixture}) start to marked a crucial step in mixture model applications by simplifying the maximum likelihood estimation (MLE) using the EM algorithm.
+
+McLachlan \& Peel's 2000 book further elaborate on this approach. This approach, utilizing $Y_j$ and $Z_j$, not only enhanced the computational efficiency of MLE but also laid a foundational strategy for Bayesian approaches and MCMC methods in mixture models. The paper’s impact is evident in its widespread adoption across various domains, from bioinformatics to finance, where mixture models are employed (McLachlan, 2000~\cite{mclachlan2000finite}).
 
 In 2002, Figueiredo's introduction of an unsupervised algorithm for learning finite mixture models was a game-changer. This method's ability to autonomously select the number of components represented a significant leap over previous techniques, which often relied on arbitrary or manual component selection. Additionally, the algorithm's robustness against initialization issues and singular estimates made it a go-to choice for practitioners dealing with complex multivariate data (Figueiredo, 2002~\cite{figueiredo2002unsupervised}).
 
