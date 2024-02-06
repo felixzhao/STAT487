@@ -146,16 +146,12 @@ The Proportional Odds assumption implies that the vector of coefficients $\bolds
 
 The Ordered Stereotype Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
-Given an ordinal response variable $Y$ with categories ($j=1, 2, \ldots, J$), and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y = j | X = x)$.
+Given an ordinal response variable $Y$ with categories ($j=1, 2, \ldots, J$), $i$ is number of observation, and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y_i = j | X = x)$.
 
-The cumulative probability up to the $j$th category is defined as:
-\[
-P(Y \leq j | X = x) = \sum_{k=1}^{j} P(Y = k | X = x)
-\]
 
-The cumulative logit for category $j$ is then:
+The logit for category $j$ is then:
 \[
-\log\left(\frac{P(Y \leq j | X = x)}{1 - P(Y \leq j | X = x)}\right) = \theta_j + \beta^T x
+\log\left(\frac{P(Y_i = j | X = x)}{1 - P(Y_i = 1 | X = x)}\right) = \theta_j + \beta^T x
 \]
 where $\theta_j$ is the intercept for category $j$, and $\beta$ is a vector of coefficients for $X$.
 
