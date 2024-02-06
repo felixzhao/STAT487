@@ -9,6 +9,8 @@
 % 1.  Don't need such wide margins.
 \usepackage[margin=1in]{geometry} % Setting the margins to 1 inch
 
+\usepackage{amsmath}
+
 \begin{document}
 
 \title{Ordinal Data clustering and prediction}
@@ -43,9 +45,9 @@ Ordinal data, a pivotal concept in statistical analysis, represents categorical 
 
 Such data often appear as rankings or ordered classifications where the precise distance between categories is undefined or irrelevant. Despite sometimes being numerically coded for analytical convenience, ordinal data resist traditional arithmetic operations, rendering calculations like addition or subtraction inappropriate and misleading.
 
-In the realm of statistical analysis, ordinal data necessitates specialized, non-parametric methods. The median and mode stand out as appropriate measures of central tendency for these data types, aligning with their ordered nature without assuming equal intervals between categories.
+In the realm of statistical analysis, ordinal data necessitates specialized, non-parametric methods. The median and mode stand out as appropriate measures of central tendency for this data types, aligning with their ordered nature without assuming equal intervals between categories.
 
-Ordinal data's prevalence is notably high in social sciences, especially in surveys and questionnaires designed to capture subjective assessments such as attitudes, opinions, and preferences. These instruments frequently employ scales—ranging from "strongly disagree" to "strongly agree"—to elicit responses that, while ordered, do not support the notion of fixed distances between adjacent categories. This principle underlines the core attribute of ordinal data: the clear hierarchy among responses without an inherent interval scale to quantify the gaps between them. Consequently, assigning numerical values to such categories for computational purposes is generally discouraged and conceptually flawed, as it misinterprets the data's ordinal nature 
+Ordinal data's prevalence is notably high in social sciences, especially in surveys and questionnaires designed to capture subjective assessments such as attitudes, opinions, and preferences. These instruments frequently employ scales—ranging from ``strongly disagree'' to ``strongly agree''—to elicit responses that, while ordered, do not support the notion of fixed distances between adjacent categories. This principle underlines the core attribute of ordinal data: the clear hierarchy among responses without an inherent interval scale to quantify the gaps between them. Consequently, assigning numerical values to such categories for computational purposes is generally discouraged and conceptually flawed, as it misinterprets the data's ordinal nature 
 Thus, statements of the type
 \[
 \text{``disagree''} - \text{``strongly disagree''}
@@ -60,13 +62,13 @@ are not assumed. (Johnson, 2006~\textcite{Johnson1999})
     \centering % Centers the figure
     \includegraphics[width=0.6\textwidth]{images/ordinal_data_dist.png} % Include the image with 50% of the text width
     \caption{Latent trait interpretation of ordinal classification. 
-    In this plot, the logistic density again represents the distribution of latent traits for a particular individual. 
+    In this plot, the logistic density represents the distribution of latent traits for a particular individual. 
     It is assumed that a random variable is drawn from this density, and the value of this random variable determines an individual's classification. 
     For example, if a deviate of 0.5 is drawn, the individual receives a D. (Johnson, 2006~\cite{Johnson1999}).} % Caption for the image
     \label{fig:ordinal} % Label for referencing the figure in the text
   \end{figure}
 
-\subsection*{Difference to continuous data}
+\subsection*{Comparison with continuous data}
 
 In the context of statistical analysis, the distinction between ordinal and continuous data types is pivotal, influencing both the choice of analytical methods and the depth of insights that can be derived. 
 Ordinal data, characterized by its capacity to rank order categories without indicating precise differences between them, is inherently less informative than continuous data. 
@@ -75,6 +77,7 @@ Continuous data, with its quantitative nature, allows for an infinite range of v
 The limitations of ordinal data stem from its inability to quantify the exact magnitude of differences between categories, a factor that restricts the application of parametric statistical methods. This constraint necessitates reliance on non-parametric methods, focusing on medians and modes rather than means and standard deviations, thereby offering a less detailed analysis (Conover, 1999~\cite{Conover1999}). 
 For instance, in Likert scale responses commonly used in surveys, the ordinal nature of data precludes meaningful calculations of averages or differences between responses, limiting the depth of analysis that can be achieved (Likert, 1932~\cite{Likert1932}).
 
+% task 7
 Comparatively, continuous data's capacity for precise measurement and the application of a broader range of statistical analyses enables a more detailed and accurate exploration of phenomena. This difference underscores the importance of data type consideration in research design and analysis, as it directly impacts the validity and comprehensiveness of research findings.
 
 In summary, while ordinal data is invaluable for capturing rankings and subjective assessments, 
@@ -82,42 +85,21 @@ its analytical limitations highlight the superior informational value of continu
 This distinction is crucial for researchers in the selection of appropriate statistical methods and in the interpretation of their data, 
 ensuring that conclusions drawn are both valid and meaningful.
 
+\subsection*{Clustering}
+% Task 8
+% briefly introduce the topic of clustering in
+% general. This section can be fairly short, e.g. just a few paragraphs to
+% mention what clustering is and give examples of applications and briefly
+% mention the two types of clustering (distance-based and model-based).
+
+
 Due to the limitations of distance-based clustering approaches like K Neighbors, which struggle with the non-quantitative nature of ordinal data, statistical-based clustering methods offer a more effective solution. These methods adeptly handle the ordinal data's intrinsic ranking system, bypassing the need for precise numerical distances between categories.
 
 % clustering
 
-\section{Statistical based Ordinal Data Clustering}
+\section{Statistical-based Ordinal Data Clustering}
 
-\subsection{Finite Mixture modeling}
-
-Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation "finite" in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
-
-The Finite mixture model is defined as:
-\begin{equation}
-p(x_i|\Theta) = \sum_{k=1}^{K} \pi_k f(x_i|\theta_k)
-\end{equation}
-where:
-\begin{itemize}
-    \item $p(x_i|\Theta)$ denotes the overall mixture model's density or mass function for observation $x_i$.
-    \item $K$ is the total number of component distributions in the mixture.
-    \item $\pi_k$ represents the mixing proportion of the $k$th component, satisfying $0 \leq \pi_k \leq 1$ and $\sum_{k=1}^{K} \pi_k = 1$.
-    \item $f(x_i|\theta_k)$ is the probability density function (pdf) or probability mass function (pmf) of the $k$th component distribution evaluated at $x_i$.
-    \item $\theta_k$ denotes the parameter vector of the $k$th component distribution.
-    \item $\Theta$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_K\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_K\}$.
-\end{itemize}
-
-The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
-
-\begin{figure}[ht!] % 'h!' places the figure here, in the text
-    \centering % Centers the figure
-    \includegraphics[width=0.6\textwidth]{images/trend.png} % Include the image with 50% of the text width
-    \caption{The increase in publications indexed by PubMed that mention a keyword specific to cluster analyses relative to the number of publications 
-    that mention a traditional statistical test. 
-    Particularly sharp increases can be seen for finite mixture modelling.
-    From~\cite{dalmaijer2022statistical}.} % Caption for the image
-    \label{fig:trend} % Label for referencing the figure in the text
-  \end{figure}
-
+% Task 10, move before FMM.
 \subsection{Stereotype Ordered Regression Model}
 
 The Stereotype Ordered Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
@@ -148,20 +130,52 @@ The Proportional Odds model is another approach which defined for an ordinal res
 Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
 
 \[
-\log\left(\frac{P(Y \leq j | X)}{P(Y > j | X)}\right) = \theta_j - X\beta
+\log\left(\frac{P(Y \leq j | \mathbf{X})}{P(Y > j | \mathbf{X})}\right) = \theta_j - \mathbf{X}\boldsymbol{\beta}
 \]
 
 where:
 \begin{itemize}
-    \item $P(Y \leq j | X)$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
+    \item $P(Y \leq j | \mathbf{X})$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $X$.
     \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
-    \item $X\beta$ represents the linear predictor, with $X$ being the matrix of predictor variables and $\beta$ the vector of coefficients corresponding to these variables.
-    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $X\beta$.
+    \item $\mathbf{X}\boldsymbol{\beta}$ represents the linear predictor, with $\mathbf{X}$ being the matrix of predictor variables and $\boldsymbol{\beta}$ the vector of coefficients corresponding to these variables.
+    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\mathbf{X}\boldsymbol{\beta}$.
 \end{itemize}
 
-The Proportional Odds assumption implies that the vector of coefficients $\beta$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
+The Proportional Odds assumption implies that the vector of coefficients $\boldsymbol{\beta}$ is the same across all category thresholds, facilitating a simpler interpretation and analysis. (McCullagh, 1980~\cite{mccullagh1980regression})
 
-\section{Historical of Statistical based Ordinal Data Clustering}
+
+\subsection{Finite Mixture modeling}
+
+Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation ``finite'' in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
+
+The Finite mixture model is defined as:
+\begin{equation}
+p(x_i|\mathbf{\Theta}) = \sum_{k=1}^{K} \pi_k f(x_i|\theta_k)
+\end{equation}
+where:
+\begin{itemize}
+    \item $p(x_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
+    \item $K$ is the total number of component distributions in the mixture.
+    \item $\pi_k$ represents the mixing proportion of the $k$th component, satisfying $0 \leq \pi_k \leq 1$ and $\sum_{k=1}^{K} \pi_k = 1$.
+    \item $f(x_i|\theta_k)$ is the probability density function (pdf) or probability mass function (pmf) of the $k$th component distribution evaluated at $x_i$.
+    \item $\theta_k$ denotes the parameter vector of the $k$th component distribution.
+    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_K\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_K\}$.
+\end{itemize}
+
+The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
+
+\begin{figure}[ht!] % 'h!' places the figure here, in the text
+    \centering % Centers the figure
+    \includegraphics[width=0.6\textwidth]{images/trend.png} % Include the image with 50% of the text width
+    \caption{The increase in publications indexed by PubMed that mention a keyword specific to cluster analyses relative to the number of publications 
+    that mention a traditional statistical test. 
+    Particularly sharp increases can be seen for finite mixture modelling.
+    From~\cite{dalmaijer2022statistical}.} % Caption for the image
+    \label{fig:trend} % Label for referencing the figure in the text
+  \end{figure}
+
+
+\section{History of Statistical based Ordinal Data Clustering}
 
 \subsection*{Early Developments (2000--2010)}
 
