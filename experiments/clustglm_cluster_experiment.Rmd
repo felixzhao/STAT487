@@ -1,0 +1,87 @@
+---
+title: "STAT487_Cluster"
+author: "Quan Zhao"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+### **Step 1: Set Up and Load Required Packages**
+
+manual restart R session before install
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("devtools")
+
+```
+
+```{r}
+devtools::install_github("vuw-clustering/clustglm")
+```
+
+```{r}
+install.packages("httr")
+```
+
+```{r}
+library(clustglm)
+```
+
+```{r}
+library(httr)
+```
+
+### **Step 2: Download and Load the Dataset**
+
+```{r}
+url <- "https://raw.githubusercontent.com/vuw-clustering/clustord/master/inst/scripts/STAT292eval.txt"
+destfile <- "STAT292eval.txt"
+
+# Download the file
+GET(url, write_disk(destfile, overwrite = TRUE))
+
+# Load the dataset
+data <- read.table(destfile, header = TRUE, sep = "")
+
+```
+
+### **Step 3: Preprocessing the Data**
+
+```{r}
+# place hold
+```
+
+### **Step 4: Clustering with `clustglm`**
+
+```{r}
+# Assuming clustglm is already defined or loaded from a library
+# and 'data' is your dataset
+
+result <- clustglm(formula = y ~ x1 + x2,
+                   family = "binomial",
+                   data = data,
+                   nclust = 5)
+
+```
+
+```{r}
+# This is a pseudo-code example. Please refer to the actual `clustglm` documentation for accurate function usage
+# Assuming clustglm(data, k) where data is your dataset and k is the number of clusters
+
+# Example: Clustering into 3 groups
+result <- clustglm('y ~ x1 + x2',data, 3)
+
+# Check results
+print(result)
+
+```
+
+### **Step 5: Analyze the Results**
+
+```{r}
+# Example analysis (dependent on the actual output structure of clustglm)
+cat("Cluster assignments:", result$cluster)
+```
