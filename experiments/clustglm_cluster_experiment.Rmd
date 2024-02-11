@@ -19,7 +19,7 @@ install.packages("devtools")
 ```
 
 ```{r}
-devtools::install_github("vuw-clustering/clustglm")
+devtools::install_github("vuw-clustering/clustglm", build_vignettes = TRUE)
 ```
 
 ```{r}
@@ -48,6 +48,11 @@ data <- read.table(destfile, header = TRUE, sep = "")
 
 ```
 
+```{r}
+names(data)
+str(data)
+```
+
 ### **Step 3: Preprocessing the Data**
 
 ```{r}
@@ -57,31 +62,28 @@ data <- read.table(destfile, header = TRUE, sep = "")
 ### **Step 4: Clustering with `clustglm`**
 
 ```{r}
-# Assuming clustglm is already defined or loaded from a library
-# and 'data' is your dataset
-
-result <- clustglm(formula = y ~ x1 + x2,
-                   family = "binomial",
+result <- clustglm(X6~rowclust,
+                   family = "poisson",
                    data = data,
-                   nclust = 5)
+                   nclust = 2,
+                   clustfactnames = "rowclust")
 
 ```
 
 ```{r}
-# This is a pseudo-code example. Please refer to the actual `clustglm` documentation for accurate function usage
-# Assuming clustglm(data, k) where data is your dataset and k is the number of clusters
-
-# Example: Clustering into 3 groups
-result <- clustglm('y ~ x1 + x2',data, 3)
-
-# Check results
-print(result)
+summary(result)
 
 ```
 
 ### **Step 5: Analyze the Results**
 
 ```{r}
-# Example analysis (dependent on the actual output structure of clustglm)
-cat("Cluster assignments:", result$cluster)
+cat("Cluster assi
+```
+
+```{r}
+round(row2clustonly.out$pp.list$rowclust,2)
+```
+
+```{gnments:", result$cluster)}
 ```
