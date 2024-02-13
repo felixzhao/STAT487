@@ -1,0 +1,2 @@
+this paper treat "genotype" as meaning "observation"
+and "population" as "cluster" and "likelihood" as "probability"
