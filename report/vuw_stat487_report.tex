@@ -128,16 +128,17 @@ The Proportional Odds assumption implies that the vector of coefficients $\beta$
 
 The Ordered Stereotype Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
-Given an ordinal response variable $Y$ with categories ($j=1, 2, \ldots, J$), and a vector of independent variables $X$, the probability of $Y$ falling into the $j$th category, given $X = x$, is denoted as $P(Y = j | X = x)$.
+Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
 
 
-The logit for category $j$ is then:
+The logit for category $k$ is then:
 \[
-\log\left(\frac{P(Y = j | X = x)}{1 - P(Y = 1 | X = x)}\right) = \theta_j + \phi_j \beta^T x
+\log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_c
 \]
-where $\theta_j$ is the intercept for category $j$, and $\beta$ is a vector of coefficients for $X$.
+where $\mu_k$ is the intercept for category $k$, 
+and $\alpha$ represent the effects cluster $c$, which $c \in C$.
 And come with hypothesis
-$1 = \phi_1 \geq \phi_2 \geq \ldots \geq \phi_k = 0.$
+$0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$
 Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
 This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern. (~\cite{anderson1984regression})
 
