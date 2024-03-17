@@ -107,40 +107,38 @@ Model-based clustering is often more suitable for ordinal data—data that conta
 
 \subsection{Proportional Odds model}
 
-The Proportional Odds model is another approach which defined for an ordinal response variable $Y$ with $J$ ordered categories ($j=1, 2, \ldots, J$). 
-Given a set of predictor variables represented by the vector $X$, the model expresses the cumulative log odds of $Y$ being less than or equal to a category $j$ as follows:
+The Proportional Odds model (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
+The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \[
-\log\left(\frac{P(Y \leq j | X = x)}{P(Y > j | X = x)}\right) = \theta_j - \beta^T x
+\log(P(Y \leq k )) = \mu_k - \alpha_g
 \]
 
 where:
 \begin{itemize}
-    \item $P(Y \leq j | X = x)$ is the cumulative probability of $Y$ being in category $j$ or any category below $j$, given the predictors $x$.
-    \item $\theta_j$ is the intercept term for category $j$, which allows the log odds to vary across categories.
-    \item $\beta^T x$ represents the linear predictor, with $X$ being the matrix of predictor variables and $\beta$ the vector of coefficients corresponding to these variables.
-    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories, which is encapsulated in the term $\beta^T x$.
+    \item $P(Y \leq k)$ is the cumulative probability of $Y$ being in category $k$ or any category below $k$.
+    \item $\mu_k$ is the intercept term for category $k$, which allows the log odds to vary across categories.
+    \item $\alpha_g$ represents the effects cluster $g$ and $C$ with clusters ({$g=1, 2, \ldots, G$}).
+    \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories.
 \end{itemize}
-
-The Proportional Odds assumption implies that the vector of coefficients $\beta$ is the same across all category thresholds. (~\cite{mccullagh1980regression})
 
 \subsection{Ordered Stereotype Regression Model}
 
-The Ordered Stereotype Regression Model is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
+The Ordered Stereotype Regression Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
 Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
 
 
 The logit for category $k$ is then:
 \[
-\log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_c
+\log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
 \]
 where $\mu_k$ is the intercept for category $k$, 
-and $\alpha$ represent the effects cluster $c$, which $c \in C$.
+and $\alpha$ represents the effects cluster $g$, where $g \in C$.
 And come with hypothesis
 $0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$
 Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
-This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern. (~\cite{anderson1984regression})
+This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
 
 
 \subsection{Finite Mixture modeling}
