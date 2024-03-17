@@ -205,6 +205,24 @@ Compare with previous work, Jacques and Biernacki's (~\cite{jacques2018model}) m
 
 Compared to tree based or distance based clustering algorithms, statistical based clustering algorithms demonstrate superior performance with ordinal data, particularly in scenarios involving multiclass and multioutput cases. 
 This advantage stems from two key factors: firstly, ordinal data do not presuppose equal distances between categories, a condition that distance-based methods often rely on. Secondly, ordinal data typically encompass only a few categories, which can limit the effectiveness of tree-based methods designed to partition data across a broader numerical range.
+
+\section{Cluster prediction for Ordinal Data}
+
+In this work a cluster prediction approach based on finite mixture model.
+The row cluster by ordered stereotype Regression model will be used as a sample to introducing this approach.
+It is easy to extended to other approach like Proportional Odds model and tohers, 
+And also easily extend to other cluster like column cluster or others.
+
+In section 2, clustering approach has been introduced.
+After EM algorithm, we will have the estimate of the parameters.
+Take OSRM model as an example, after EM algorithm finished, 
+the M step will give the estimate of $\mu$ and $\phi$ for each category $k$.
+the estimate effect of cluster  $\alpha$.
+
+For given new ordinal response variable $\tilde{y_j} \in \tilde{Y}$, 
+
+
+
 \section{Conclusion and Future Directions}
 
 The evolution of mixture models from McLachlan's initial work in 2000 to advanced models in 2019 showcases a field marked by dynamic growth and innovation. These models have not only solved historical challenges but also set the stage for future advancements. As the field progresses, a key focus is integrating machine learning with traditional statistical methods, enhancing the capability of mixture models to accurately predict cluster membership for new data points. This is especially relevant in artificial intelligence applications, where mixture models contribute to improved pattern recognition and decision-making.
