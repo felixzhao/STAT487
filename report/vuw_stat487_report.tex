@@ -110,9 +110,9 @@ Model-based clustering is often more suitable for ordinal data—data that conta
 The Proportional Odds model (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
 The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
-\[
-\log(P(Y \leq k )) = \mu_k - \alpha_g
-\]
+\begin{equation}
+log(P(Y \leq k )) = \mu_k - \alpha_g
+\end{equation}
 
 where:
 \begin{itemize}
@@ -130,9 +130,10 @@ Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the
 
 
 The logit for category $k$ is then:
-\[
-\log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
-\]
+\begin{equation}
+log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
+\end{equation}
+
 where $\mu_k$ is the intercept for category $k$, 
 and $\alpha$ represents the effects cluster $g$, where $g \in C$.
 And come with hypothesis
@@ -219,7 +220,13 @@ Take OSRM model as an example, after EM algorithm finished,
 the M step will give the estimate of $\mu$ and $\phi$ for each category $k$.
 the estimate effect of cluster  $\alpha$.
 
-For given new ordinal response variable $\tilde{y_j} \in \tilde{Y}$, 
+For given new ordinal response variable $\tilde{Y}$, the Ordered Stereotype Regression Model (OSRM) appraoch as sample.
+the probability of the new observation belongs to cluster $g$, where $g \in C$ is,
+
+\begin{equation}
+P(\tilde{Z}=g|Y=k) = \mu_k + \phi_k \alpha_g
+\end{equation}
+
 
 
 
