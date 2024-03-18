@@ -221,11 +221,21 @@ the M step will give the estimate of $\mu$ and $\phi$ for each category $k$.
 the estimate effect of cluster  $\alpha$.
 
 For given new ordinal response variable $\tilde{Y}$, the Ordered Stereotype Regression Model (OSRM) appraoch as sample.
-the probability of the new observation belongs to cluster $g$, where $g \in C$ is,
+When $g \in C$ and $C$ the set of cluster, the probability of the new observation belongs to cluster $g$ is:
 
 \begin{equation}
-P(\tilde{Z}=g|Y=k) = \mu_k + \phi_k \alpha_g
+P(C=g|\tilde{Y}=k) = \mu_k + \phi_k \alpha_g
+\label{equ:prediction}
 \end{equation}
+
+\subsection{Prediction Approach}
+
+In practice, the ordinal data will be random selected. 
+And this data set will be splited into two set $Y$ and $\tilde{Y}$.
+$Y$ will be used to feed into Regression model to estimate parameters, $\mu, \phi$ and $\alpha$,  by EM algorithm.
+For each row in $\tilde{Y}$ the probability of each cluster can be calcuated following the give formula ~\ref{equ:prediction}.
+
+\subsection{Datasets}
 
 
 
