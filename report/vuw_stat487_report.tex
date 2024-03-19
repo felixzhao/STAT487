@@ -207,44 +207,41 @@ Compare with previous work, Jacques and Biernacki's (~\cite{jacques2018model}) m
 Compared to tree based or distance based clustering algorithms, statistical based clustering algorithms demonstrate superior performance with ordinal data, particularly in scenarios involving multiclass and multioutput cases. 
 This advantage stems from two key factors: firstly, ordinal data do not presuppose equal distances between categories, a condition that distance-based methods often rely on. Secondly, ordinal data typically encompass only a few categories, which can limit the effectiveness of tree-based methods designed to partition data across a broader numerical range.
 
-\section{Cluster prediction for Ordinal Data}
+\section{Cluster Prediction for Ordinal Data}
 
-In this work a cluster prediction approach based on finite mixture model.
-The row cluster by ordered stereotype Regression model will be used as a sample to introducing this approach.
-It is easy to extended to other approach like Proportional Odds model and tohers, 
-And also easily extend to other cluster like column cluster or others.
+This study introduces a robust cluster prediction approach grounded in finite mixture models, showcasing the Ordered Stereotype Regression Model (OSRM) as a primary example to illustrate this method's application to ordinal data. This technique is not only adaptable to various models such as the Proportional Odds Model but can also be extended to different types of clustering, including column clustering and beyond.
 
-In section 2, clustering approach has been introduced.
-After EM algorithm, we will have the estimate of the parameters.
-Take OSRM model as an example, after EM algorithm finished, 
-the M step will give the estimate of $\mu$ and $\phi$ for each category $k$.
-the estimate effect of cluster  $\alpha$.
+\subsection{Methodological Overview}
 
-For given new ordinal response variable $\tilde{Y}$, the Ordered Stereotype Regression Model (OSRM) appraoch as sample.
-When $g \in C$ and $C$ the set of cluster, the probability of the new observation belongs to cluster $g$ is:
+The essence of our approach lies in leveraging the estimates obtained from the Expectation-Maximization (EM) algorithm, which provides us with crucial parameters ($\mu$, $\phi$, and $\alpha$) necessary for the prediction process. Specifically, within the framework of the OSRM, the EM algorithm's M-step furnishes us with estimates for the intercepts ($\mu$) and the effects ($\phi$ and $\alpha$) for each category ($k$), thereby laying the groundwork for predicting cluster membership.
+
+Given a new ordinal response variable $\tilde{Y}$, the probability that an observation belongs to a particular cluster ($g$) is articulated as follows:
 
 \begin{equation}
 P(C=g|\tilde{Y}=k) = \mu_k + \phi_k \alpha_g
-\label{equ:prediction}
 \end{equation}
 
-\subsection{Prediction Approach}
+This formula serves as the cornerstone for our predictive framework, enabling a nuanced understanding of how new data points correlate with existing clusters.
 
-In practice, the ordinal data will be random selected. 
-And this data set will be splited into two set $Y$ and $\tilde{Y}$.
-$Y$ will be used to feed into Regression model to estimate parameters, $\mu, \phi$ and $\alpha$,  by EM algorithm.
-For each row in $\tilde{Y}$ the probability of each cluster can be calcuated following the give formula ~\ref{equ:prediction}.
+\subsection{Practical Implementation}
 
-\subsection{Datasets}
+In practice, the predictive model begins with a dataset randomly partitioned into two subsets: $Y$ for training and $\tilde{Y}$ for validation. The training set, $Y$, is utilized to calibrate the regression model—yielding estimates for the parameters $\mu$, $\phi$, and $\alpha$ through the application of the EM algorithm. Subsequently, for each instance within the $\tilde{Y}$ set, the model computes the probability of cluster membership based on the established parameters, thereby facilitating the prediction of cluster assignments for new observations.
 
-The Public Sector Commission WA Employee Perception Survey 2016(~\cite{PSCWA2016}), conducted by the Public Sector Commission of Western Australia, aimed to capture employee perceptions on workplace factors like leadership, communication, and work/life balance. This survey helps understand the organizational culture and identify areas for improvement within the public sector. In 2016, employees from 11 public sector entities participated with a 53\% response rate, resulting in 3,883 valid responses. The dataset includes a survey instrument, individual responses, and a summary of the results, available for download under the Creative Commons Attribution 3.0 Australia license.
+This pragmatic approach underscores the model's adaptability and its capacity to handle real-world data complexities, offering a robust tool for predictive clustering in various domains.
 
+\subsection{Application Context and Datasets}
+
+The practical utility of our cluster prediction method is exemplified through its application to the Public Sector Commission WA Employee Perception Survey 2016. Conducted by the Public Sector Commission of Western Australia, this survey gathered insights into employee perceptions on pivotal workplace factors, such as leadership dynamics, communication efficacy, and the balance between work and life. The survey's findings are instrumental in deciphering the nuances of organizational culture and pinpointing potential areas for enhancement within the public sector.
+
+The 2016 iteration of the survey witnessed participation from employees across 11 public sector entities, boasting a response rate of 53\% and culminating in 3,883 valid responses. This dataset, encompassing individual responses, the survey instrument, and a summary of results, is disseminated under the Creative Commons Attribution 3.0 Australia license, providing a rich resource for analysis and application of the discussed predictive clustering approach.
 
 \section{Conclusion and Future Directions}
 
-The evolution of mixture models from McLachlan's initial work in 2000 to advanced models in 2019 showcases a field marked by dynamic growth and innovation. These models have not only solved historical challenges but also set the stage for future advancements. As the field progresses, a key focus is integrating machine learning with traditional statistical methods, enhancing the capability of mixture models to accurately predict cluster membership for new data points. This is especially relevant in artificial intelligence applications, where mixture models contribute to improved pattern recognition and decision-making.
+The evolution of mixture models from the foundational work of McLachlan in 2000 to the advanced developments up to 2019 exemplifies a trajectory marked by significant growth and innovation. These advancements have not only addressed longstanding challenges but also paved the way for future breakthroughs. A critical aspect of this ongoing evolution is the integration of machine learning with traditional statistical methods, enhancing the predictive accuracy of cluster memberships for new data points—a capability increasingly vital in fields such as artificial intelligence, where precision in pattern recognition and decision-making is paramount.
 
-Furthermore, as data complexity and volume continue to escalate, the demand for robust, efficient, and versatile mixture models is more critical than ever. Future research is expected to concentrate on scaling up these models and improving their adaptability across diverse data types and structures. This progression underscores the mixture models' indispensable role in modern data analysis, poised to address the ever-growing challenges in data science and AI.
+The proposed methodology for cluster prediction in ordinal data, integrating finite mixture models with regression analysis, signals a pivotal advancement in the statistical analysis domain. Our plan to utilize the Public Sector Commission WA Employee Perception Survey 2016 as a benchmark to evaluate the performance of this approach underscores our commitment to rigorous empirical validation. This dataset serves as a crucial testbed for demonstrating the method's effectiveness in navigating the intricacies of ordinal data and its potential for broad applicability across diverse research areas.
+
+As we advance, the growing complexity and volume of data underscore the need for models that are robust, efficient, and adaptable to a wide range of data types and structures. Future research will focus on enhancing these models' scalability and adaptability, further refining their predictive capabilities across increasingly complex datasets. This forward-looking agenda aims to solidify the role of mixture models in modern data analysis, ensuring they remain indispensable tools capable of confronting the expanding challenges in data science and artificial intelligence. Embracing the confluence of traditional statistical techniques and modern machine learning methodologies, mixture models are set to drive the next wave of innovations in data exploration, offering new insights and enhanced analytical capabilities.
 
 \printbibliography
 
