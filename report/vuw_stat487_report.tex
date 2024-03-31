@@ -139,6 +139,36 @@ Model-based clustering is often more suitable for ordinal data—data that conta
 
 \section{Statistical-based Ordinal Data Clustering}
 
+\subsection{Finite Mixture modeling}
+
+Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation ``finite'' in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
+
+The Finite mixture model is defined as:
+\begin{equation}
+p(x_i|\mathbf{\Theta}) = \sum_{k=1}^{K} \pi_k f(x_i|\theta_k)
+\end{equation}
+where:
+\begin{itemize}
+    \item $p(x_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
+    \item $K$ is the total number of component distributions in the mixture.
+    \item $\pi_k$ represents the mixing proportion of the $k$th component, satisfying $0 \leq \pi_k \leq 1$ and $\sum_{k=1}^{K} \pi_k = 1$.
+    \item $f(x_i|\theta_k)$ is the probability density function (pdf) or probability mass function (pmf) of the $k$th component distribution evaluated at $x_i$.
+    \item $\theta_k$ denotes the parameter vector of the $k$th component distribution.
+    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_K\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_K\}$.
+\end{itemize}
+
+The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
+
+\begin{figure}[ht!] % 'h!' places the figure here, in the text
+    \centering % Centers the figure
+    \includegraphics[width=0.6\textwidth]{images/trend.png} % Include the image with 50% of the text width
+    \caption{The increase in publications indexed by PubMed that mention a keyword specific to cluster analyses relative to the number of publications 
+    that mention a traditional statistical test. 
+    Particularly sharp increases can be seen for finite mixture modelling.
+    From~\cite{dalmaijer2022statistical}.} % Caption for the image
+    \label{fig:trend} % Label for referencing the figure in the text
+  \end{figure}
+
 \subsection{Proportional Odds model}
 
 The Proportional Odds model (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
@@ -175,43 +205,102 @@ $0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$
 Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
 This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
 
+% 123
 
-\subsection{Finite Mixture modeling}
+\subsection{Expectation-Maximization (EM) Algorithm}
 
-Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation ``finite'' in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
+% EM algorithm has been introduced by Dempster, Laird and Rubin in 1977. (~\cite*[Dempster, Laird and Rubin]{Dempster1977}).
 
-The Finite mixture model is defined as:
+% The Expectation-Maximization (EM) algorithm is a two-step iterative method to obtain the maximum likelihood estimate (MLE) of the parameters of a statistical model, where the model depends on unobserved latent variables. The EM algorithm is particularly useful for mixture models, where the data is considered to be generated from a combination of several different statistical distributions, each representing a different 'component' of the population.
+
+% \subsubsection*{Expectation-Maximization Algorithm for Mixture Model}
+
+% A mixture model is a probabilistic model for representing the presence of subpopulations within an overall population, without requiring that an observed data set explicitly identify the subpopulation to which an individual observation belongs. Formally, if we assume a mixture of $K$ components, the probability density function (pdf) of a mixture model can be written as:
+
+% \begin{equation}
+% p(x|\Theta) = \sum_{k=1}^{K} \pi_k f_k(x|\theta_k)
+% \end{equation}
+
+% where $x$ represents the data points, $\Theta$ represents the parameters of the mixture model which include both the mixing coefficients $\pi_k$ and the parameters of the component distributions $\theta_k$, $f_k$ is the component distribution, and $\pi_k$ are the mixing coefficients such that $\sum_{k=1}^{K} \pi_k = 1$ and $\pi_k \ge 0$.
+
+% \subsubsection{Introduction to the EM Algorithm}
+The Expectation-Maximization (EM) algorithm is a powerful statistical tool for finding maximum likelihood estimates in models with latent variables. It consists of two main steps: the Expectation step (E-step) and the Maximization step (M-step).
+
+During the E-step, the algorithm estimates the expected value of the log-likelihood function, with respect to the conditional distribution of the latent variables given the observed data and the current estimates of the parameters. This step can be formally expressed as follows:
 \begin{equation}
-p(x_i|\mathbf{\Theta}) = \sum_{k=1}^{K} \pi_k f(x_i|\theta_k)
+Q(\theta | \theta^{(t)}) = E_{Z|X,\theta^{(t)}}[\log L(\theta; X, Z)]
 \end{equation}
-where:
-\begin{itemize}
-    \item $p(x_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
-    \item $K$ is the total number of component distributions in the mixture.
-    \item $\pi_k$ represents the mixing proportion of the $k$th component, satisfying $0 \leq \pi_k \leq 1$ and $\sum_{k=1}^{K} \pi_k = 1$.
-    \item $f(x_i|\theta_k)$ is the probability density function (pdf) or probability mass function (pmf) of the $k$th component distribution evaluated at $x_i$.
-    \item $\theta_k$ denotes the parameter vector of the $k$th component distribution.
-    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_K\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_K\}$.
-\end{itemize}
+where \( \theta \) denotes the parameter vector, \( X \) represents the observed data, \( Z \) are the latent variables, \( L \) is the likelihood function, and \( \theta^{(t)} \) are the parameter estimates from the previous iteration.
 
-The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
+In the M-step, the algorithm maximizes the expected log-likelihood found in the E-step with respect to the parameters to obtain new parameter estimates:
+\begin{equation}
+\theta^{(t+1)} = \arg \max_{\theta} Q(\theta | \theta^{(t)})
+\end{equation}
 
-\begin{figure}[ht!] % 'h!' places the figure here, in the text
-    \centering % Centers the figure
-    \includegraphics[width=0.6\textwidth]{images/trend.png} % Include the image with 50% of the text width
-    \caption{The increase in publications indexed by PubMed that mention a keyword specific to cluster analyses relative to the number of publications 
-    that mention a traditional statistical test. 
-    Particularly sharp increases can be seen for finite mixture modelling.
-    From~\cite{dalmaijer2022statistical}.} % Caption for the image
-    \label{fig:trend} % Label for referencing the figure in the text
-  \end{figure}
+\subsubsection*{E-step (Expectation Step)}
+
+During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $K$ components, based on the current estimates of the parameters.
+
+For a mixture model, the posterior probability (also known as the responsibility) that component $k$ generates data point $x_i$ is calculated as:
+
+\begin{equation}
+\gamma(z_{ik}) = \frac{\pi_k f_k(x_i|\theta_k)}{\sum_{j=1}^{K} \pi_j f_j(x_i|\theta_j)}
+\end{equation}
+
+where $\gamma(z_{ik})$ is the responsibility that component $k$ has for data point $i$.
+
+\subsubsection*{M-step (Maximization Step)}
+
+In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood found in the E-step. 
+This involves updating the estimates of both the parameters of the component distributions and the mixing coefficients.
+
+Update the mixing coefficients:
+
+\begin{equation}
+\pi_k^{new} = \frac{1}{N} \sum_{i=1}^{N} \gamma(z_{ik})
+\end{equation}
+
+% 2. Update the parameters of the component distributions ($\theta_k$), which depends on the form of the distribution. For example, in a Gaussian mixture model, the mean and covariance of each Gaussian component are updated as follows:
+
+% \begin{equation}
+% \mu_k^{new} = \frac{\sum_{i=1}^{N} \gamma(z_{ik}) x_i}{\sum_{i=1}^{N} \gamma(z_{ik})}
+% \end{equation}
+
+% \begin{equation}
+% \Sigma_k^{new} = \frac{\sum_{i=1}^{N} \gamma(z_{ik}) (x_i - \mu_k^{new})(x_i - \mu_k^{new})^T}{\sum_{i=1}^{N} \gamma(z_{ik})}
+% \end{equation}
+
+% where $N$ is the total number of data points.
+
+% abc
+
+% \section{Expectation-Maximization Algorithm for Clustering in Finite Mixture Models}
+
+
+
+\subsection{EM Algorithm Sample for clustering by Ordered Stereotype Regression Model}
+For clustering within a finite mixture model, the EM algorithm treats the cluster assignments as latent variables. The objective is to maximize the likelihood of the observed data under the mixture model.
+
+The E-step computes the posterior probabilities that an observation belongs to each cluster, given the current parameter estimates. This can be expressed for a particular cluster \( k \) as follows:
+\begin{equation}
+P_{ij}(Y_{ij} = k) = \frac{e^{\mu_k + \phi_k \cdot x_r}}{\sum_{q=1}^{Q} e^{\mu_q + \phi_q \cdot x_r}}
+\end{equation}
+where \( P_{ij} \) denotes the probability that the \( i \)-th observation in the \( j \)-th cluster is in cluster \( k \), \( \mu_k \) and \( \phi_k \) are the current estimates of the parameters for cluster \( k \), and \( x_r \) represents the observed data.
+
+The M-step then updates the parameter estimates to maximize the likelihood given the posterior probabilities computed in the E-step. The new parameter estimates for cluster \( k \) are computed as:
+\begin{equation}
+\theta_{k}^{(t+1)} = \frac{\sum_{i=1}^{N} P_{ij}(Y_{ij} = k) \cdot x_{i}}{\sum_{i=1}^{N} P_{ij}(Y_{ij} = k)}
+\end{equation}
+where \( N \) is the number of observations, and \( x_{i} \) is the observed data for the \( i \)-th observation.
+
+The algorithm iterates between these two steps until the change in the likelihood or the parameter estimates is below a pre-defined threshold, indicating convergence.
+
+% efg
 
 
 \section{History of Statistical based Ordinal Data Clustering}
 
 \subsection*{Early Developments (2000--2010)}
-
-EM algorithm has been introduced by Dempster, Laird and Rubin in 1977. (~\cite*[Dempster, Laird and Rubin]{Dempster1977}).
 
 McLachlan \& Basford 1988 (~\cite{mclachlan1988mixture}) start to marked a crucial step in mixture model applications by simplifying the maximum likelihood estimation (MLE) using the EM algorithm.
 
