@@ -67,7 +67,7 @@ resource for both researchers and practitioners, providing insights
 necessary for navigating the complexities of ordinal data and leveraging
 its full potential in analytical endeavors.
 
-\subsection*{Ordinal Data}
+\subsection{Ordinal Data}
 
 Ordinal data, a pivotal concept in statistical analysis, represents categorical data characterized by a meaningful order among its categories, without implying uniform differences between these ranks. Unlike nominal data, which merely categorizes without any implied ranking, ordinal data elevates the categorical analysis by introducing a hierarchy or sequence that is significant yet lacks quantifiable intervals between its elements. This characteristic distinguishes ordinal data: it conveys the sequence of values but remains silent on the magnitude of difference between successive ranks.
 
@@ -107,7 +107,7 @@ This demonstrates that performing arithmetic calculations on the numerical value
 %     \label{fig:ordinal} % Label for referencing the figure in the text
 %   \end{figure}
 
-\subsection*{Comparison with continuous numerical data}
+\subsection{Comparison with continuous numerical data}
 
 In the context of statistical analysis, the distinction between ordinal and continuous numerical data types is pivotal, influencing both the choice of analytical methods and the depth of insights that can be derived. 
 Ordinal data, characterized by its capacity to rank order categories without indicating precise differences between them, is inherently less informative than continuous numerical data. 
@@ -125,7 +125,7 @@ its analytical limitations highlight the superior informational value of continu
 This distinction is crucial for researchers in the selection of appropriate statistical methods and in the interpretation of their data, 
 ensuring that conclusions drawn are both valid and meaningful.
 
-\subsection*{Clustering}
+\subsection{Clustering}
 
 Clustering is a fundamental technique in the field of data analysis and machine learning, aimed at grouping a set of objects in such a way that objects in the same group (or cluster) are more similar to each other than to those in other groups. Its applications span a wide range of areas including market research, pattern recognition, image analysis, and bioinformatics, among others. For instance, in market research, clustering can help identify distinct customer segments based on purchasing behavior, while in bioinformatics, it can be used to classify different types of genes or proteins with similar functions.
 
@@ -139,7 +139,7 @@ Model-based clustering is often more suitable for ordinal data—data that conta
 
 \section{History of Statistical based Ordinal Data Clustering}
 
-\subsection*{Early Developments (2000--2010)}
+\subsection{Early Developments (2000--2010)}
 
 McLachlan \& Basford 1988 (~\cite{mclachlan1988mixture}) start to marked a crucial step in mixture model applications by simplifying the maximum likelihood estimation (MLE) using the EM algorithm.
 
@@ -149,7 +149,7 @@ In 2002, Figueiredo's introduction of an unsupervised algorithm for learning fin
 
 A key paper in 2010 by Volodymyr and Ranjan addressed practical challenges in applying the EM algorithm for mixture models. This comprehensive guide to estimation, model selection, and likelihood maximization was a boon for both researchers and practitioners. Notably, the work extended beyond Gaussian mixtures, offering insights and methodologies for simulating and visualizing non-Gaussian mixtures, thereby broadening the applicability of mixture models (~\cite{10.1214/09-SS053}).
 
-\subsection*{Recent Developments (2010--2019)}
+\subsection{Recent Developments (2010--2019)}
 
 In 2016, Matechou et al. introduced a novel approach to data analysis with their proposal of finite mixture models for biclustering two-mode ordinal categorical data. Utilizing proportional odds parameterization, these models offered a sophisticated understanding of complex data patterns, particularly beneficial in fields such as genomics and social sciences where ordinal data is prevalent. The application of the EM algorithm for model fitting highlighted the continued importance of this method in the context of mixture model applications (~\cite{matechou2016biclustering}).
 
@@ -164,7 +164,7 @@ Jacques and Biernacki's 2018 introduction of a model-based co-clustering algorit
 
 Compare with previous work, Jacques and Biernacki's (~\cite{jacques2018model}) method is based on a novel Binary Ordinal Search (BOS) model emphasizing efficiency and interpretability, especially with missing data. 
 
-\subsection*{Compare with other clustering algorithm}
+\subsection{Compare with other clustering algorithm}
 
 Compared to tree based or distance based clustering algorithms, statistical based clustering algorithms demonstrate superior performance with ordinal data, particularly in scenarios involving multiclass and multioutput cases. 
 This advantage stems from two key factors: firstly, ordinal data do not presuppose equal distances between categories, a condition that distance-based methods often rely on. Secondly, ordinal data typically encompass only a few categories, which can limit the effectiveness of tree-based methods designed to partition data across a broader numerical range.
@@ -270,7 +270,7 @@ In the M-step, the algorithm maximizes the expected log-likelihood found in the 
 \theta^{(t+1)} = \arg \max_{\theta} Q(\theta | \theta^{(t)})
 \end{equation}
 
-\subsubsection*{E-step (Expectation Step)}
+\subsubsection{E-step (Expectation Step)}
 
 During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $K$ components, based on the current estimates of the parameters.
 
@@ -282,7 +282,7 @@ For a mixture model, the posterior probability (also known as the responsibility
 
 where $\gamma(z_{ik})$ is the responsibility that component $k$ has for data point $i$.
 
-\subsubsection*{M-step (Maximization Step)}
+\subsubsection{M-step (Maximization Step)}
 
 In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood found in the E-step. 
 This involves updating the estimates of both the parameters of the component distributions and the mixing coefficients.
@@ -342,7 +342,7 @@ Finite mixture models, combined with ordered stereotype regression, offer a tech
 
 In our study, we will concentrate on raw clusters with (Ordered Stereotype Regression Model) OSRM as an example to demonstrate our prediction method. It is feasible to apply this approach to other types, such as column clusters, or to models like POM.
 
-\subsection*{Data Structuring and Model Training}
+\subsection{Data Structuring and Model Training}
 
 The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $m$ observations for adjusting model parameters, while the subsequent observations ($y_{m+1}, \dots, y_n$) make up the test set for evaluating the model.
 
@@ -352,7 +352,7 @@ During the training phase, the M-step of the EM algorithm updates the parameters
 
 Upon completion of the EM algorithm, we obtain their estimates $\hat{\mu}_k$, $\hat{\phi}_k$, and $\hat{\alpha}_g$, which are utilized for cluster prediction.
 
-\subsection*{Prediction and Validation}
+\subsection{Prediction and Validation}
 
 After training, in the prediction stage the prediction will be applied in each row.
 
@@ -366,7 +366,7 @@ Then, the prediction of the cluster of row would be maximum $PP_irg$ of cluster 
 
 The model's accuracy is measured by how well the predicted clusters match the actual test data classifications.
 
-\subsection*{Application to Future Observations}
+\subsection{Application to Future Observations}
 
 The predictive model can also be applied to future observations ($Y'''$). Using the same probability calculations from the test phase, the EM algorithm-optimized model can predict cluster membership for new ordinal data.
 
