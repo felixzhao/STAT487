@@ -178,16 +178,16 @@ Finite mixture models have emerged as a versatile and powerful statistical tool,
 
 The Finite mixture model is defined as:
 \begin{equation}
-p(x_i|\mathbf{\Theta}) = \sum_{k=1}^{K} \pi_k f(x_i|\theta_k)
+p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\theta_g)
 \end{equation}
 where:
 \begin{itemize}
     \item $p(x_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
-    \item $K$ is the total number of component distributions in the mixture.
-    \item $\pi_k$ represents the mixing proportion of the $k$th component, satisfying $0 \leq \pi_k \leq 1$ and $\sum_{k=1}^{K} \pi_k = 1$.
-    \item $f(x_i|\theta_k)$ is the probability density function (pdf) or probability mass function (pmf) of the $k$th component distribution evaluated at $x_i$.
-    \item $\theta_k$ denotes the parameter vector of the $k$th component distribution.
-    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_K\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_K\}$.
+    \item $G$ is the total number of component distributions in the mixture.
+    \item $\pi_g$ represents the mixing proportion of the $g$th component, satisfying $0 \leq \pi_g \leq 1$ and $\sum_{g=1}^{G} \pi_g = 1$.
+    \item $f(x_i|\theta_g)$ is the probability density function (pdf) or probability mass function (pmf) of the $g$th component distribution evaluated at $x_i$.
+    \item $\theta_g$ denotes the parameter vector of the $g$th component distribution.
+    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_G\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_G\}$.
 \end{itemize}
 
 The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
