@@ -334,26 +334,58 @@ The algorithm iterates between these two steps until the change in the likelihoo
 
 \section{Cluster Prediction for Ordinal Data}
 
-This project uses finite mixture models to predict cluster membership for ordinal data. We will make use of existing clustering methods to cluster ordinal data, and then we will propose a new method for predicting the membership for new observations. We use the Ordered Stereotype Model (OSM) for ordinal data, because it is parsimonious but flexible.
-Whilst we will focus in this project on this particular model and this particular type of data, the general approach we propose can be applied to other finite mixture models that are tailored to fit other data types. Our method can also be adapted to cluster the variables of the dataset instead of the observations, because we extend an existing clustering approach that can perform both of those tasks. Thus this study not only introduces a robust cluster prediction approach but also sets the stage for future explorations ordinal data analysis.
+Finite mixture models, combined with ordered stereotype regression, offer a technique for cluster prediction in ordinal data analysis. This method posits that a population can be probabilistically segmented into more homogeneous clusters, potentially enhancing prediction accuracy.
 
-\subsection{Methodological Overview}
+In our study, we will concentrate on raw clusters with (Ordered Stereotype Regression Model) OSRM as an example to demonstrate our prediction method. It is feasible to apply this approach to other types, such as column clusters, or to models like POM.
 
-The essence of our approach lies in leveraging the estimates obtained from the Expectation-Maximization (EM) algorithm, which provides us with crucial parameters ($\mu$, $\phi$, and $\alpha$) necessary for the prediction process. Specifically, within the framework of the OSRM, the EM algorithm's M-step furnishes us with estimates for the intercepts ($\mu$) and the effects ($\phi$ and $\alpha$) for each category ($k$), thereby laying the groundwork for predicting cluster membership.
+\subsection*{Data Structuring and Model Training}
 
-Given a new ordinal response variable $\tilde{Y}$, the probability that an observation belongs to a particular cluster ($g$) is articulated as follows:
+The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $m$ observations for adjusting model parameters, while the subsequent observations ($y_{m+1}, \dots, y_n$) make up the test set for evaluating the model.
+
+The Expectation-Maximization (EM) algorithm is used to refine the parameters of the finite mixture model using the training data. Here, $k$ represents the number of ordinal categories, and $g$ denotes the number of clusters. The aggregate probability for each category, summed across all clusters, must equal one.
+
+During the training phase, the M-step of the EM algorithm updates the parameters, $\mu_k$ and $\phi_k$ for each category, and $\alpha_g$ for each cluster.
+
+Upon completion of the EM algorithm, we obtain their estimates $\hat{\mu}_k$, $\hat{\phi}_k$, and $\hat{\alpha}_g$, which are utilized for cluster prediction.
+
+\subsection*{Prediction and Validation}
+
+After training, in the prediction stage the prediction will be applied in each row.
+
+the posterior probability of category k of row with cluster g is:
 
 \begin{equation}
-P(C=g|\tilde{Y}=k) = \mu_k + \phi_k \alpha_g
+PP_irg = \sum_{L}^{j=1} e^{\mu_k + \phi_k \cdot \alpha_g}
 \end{equation}
 
-This formula serves as the cornerstone for our predictive framework, enabling a nuanced understanding of how new data points correlate with existing clusters.
+Then, the prediction of the cluster of row would be maximum $PP_irg$ of cluster g of the row.
 
-\subsection{Practical Implementation}
+The model's accuracy is measured by how well the predicted clusters match the actual test data classifications.
 
-In practice, the predictive model begins with a dataset randomly partitioned into two subsets: $Y$ for training and $\tilde{Y}$ for validation. The training set, $Y$, is utilized to calibrate the regression model—yielding estimates for the parameters $\mu$, $\phi$, and $\alpha$ through the application of the EM algorithm. Subsequently, for each instance within the $\tilde{Y}$ set, the model computes the probability of cluster membership based on the established parameters, thereby facilitating the prediction of cluster assignments for new observations.
+\subsection*{Application to Future Observations}
 
-This pragmatic approach underscores the model's adaptability and its capacity to handle real-world data complexities, offering a robust tool for predictive clustering in various domains.
+The predictive model can also be applied to future observations ($Y'''$). Using the same probability calculations from the test phase, the EM algorithm-optimized model can predict cluster membership for new ordinal data.
+
+% This project uses finite mixture models to predict cluster membership for ordinal data. We will make use of existing clustering methods to cluster ordinal data, and then we will propose a new method for predicting the membership for new observations. We use the Ordered Stereotype Model (OSM) for ordinal data, because it is parsimonious but flexible.
+% Whilst we will focus in this project on this particular model and this particular type of data, the general approach we propose can be applied to other finite mixture models that are tailored to fit other data types. Our method can also be adapted to cluster the variables of the dataset instead of the observations, because we extend an existing clustering approach that can perform both of those tasks. Thus this study not only introduces a robust cluster prediction approach but also sets the stage for future explorations ordinal data analysis.
+
+% \subsection{Methodological Overview}
+
+% The essence of our approach lies in leveraging the estimates obtained from the Expectation-Maximization (EM) algorithm, which provides us with crucial parameters ($\mu$, $\phi$, and $\alpha$) necessary for the prediction process. Specifically, within the framework of the OSRM, the EM algorithm's M-step furnishes us with estimates for the intercepts ($\mu$) and the effects ($\phi$ and $\alpha$) for each category ($k$), thereby laying the groundwork for predicting cluster membership.
+
+% Given a new ordinal response variable $\tilde{Y}$, the probability that an observation belongs to a particular cluster ($g$) is articulated as follows:
+
+% \begin{equation}
+% P(C=g|\tilde{Y}=k) = \mu_k + \phi_k \alpha_g
+% \end{equation}
+
+% This formula serves as the cornerstone for our predictive framework, enabling a nuanced understanding of how new data points correlate with existing clusters.
+
+% \subsection{Practical Implementation}
+
+% In practice, the predictive model begins with a dataset randomly partitioned into two subsets: $Y$ for training and $\tilde{Y}$ for validation. The training set, $Y$, is utilized to calibrate the regression model—yielding estimates for the parameters $\mu$, $\phi$, and $\alpha$ through the application of the EM algorithm. Subsequently, for each instance within the $\tilde{Y}$ set, the model computes the probability of cluster membership based on the established parameters, thereby facilitating the prediction of cluster assignments for new observations.
+
+% This pragmatic approach underscores the model's adaptability and its capacity to handle real-world data complexities, offering a robust tool for predictive clustering in various domains.
 
 \subsection{Application Context and Datasets}
 
