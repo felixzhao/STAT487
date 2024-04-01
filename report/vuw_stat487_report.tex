@@ -208,7 +208,7 @@ The Proportional Odds model (~\cite{mccullagh1980regression}) is another approac
 The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \begin{equation}
-log(P(Y \leq k )) = \mu_k - \alpha_g
+log\left(\frac{P(Y \leq k)}{P(Y > k)}\right) = \mu_k - \alpha_g
 \end{equation}
 
 where:
