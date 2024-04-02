@@ -178,7 +178,8 @@ Finite mixture models have emerged as a versatile and powerful statistical tool,
 
 The Finite mixture model is defined as:
 \begin{equation}
-p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\theta_g)
+% p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\bm{\theta}_g)
+p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\boldsymbol{\theta}_g)
 \end{equation}
 where:
 \begin{itemize}
