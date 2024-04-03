@@ -234,10 +234,14 @@ log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
 
 where $\mu_k$ is the intercept for category $k$, 
 and $\alpha$ represents the effects cluster $g$, where $g \in C$.
-And come with hypothesis
-$0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$
-Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
-This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
+parameters $\phi$, which must be arranged in an ordered sequence from 
+$0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$ 
+This constraint allows the model to adapt to the inherent ordering of categories, ensuring the effects across categories follow a common, scaled pattern.
+
+% And come with hypothesis
+% $0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$
+% Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
+% This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
 
 % 123
 
