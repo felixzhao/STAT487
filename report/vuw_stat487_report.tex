@@ -364,6 +364,13 @@ During the training phase, the M-step of the EM algorithm updates the parameters
 
 Upon completion of the EM algorithm, we obtain their estimates $\hat{\mu}_k$, $\hat{\phi}_k$, and $\hat{\alpha}_g$, which are utilized for cluster prediction.
 
+To achieve our objectives, the implementation will utilize the "ClustOrd" package (\cite{clustord2024}), 
+developed by the School of Mathematics and Statistics at Victoria University of Wellington. 
+This package integrates the Ordered Stereotype Model (OSM) (\cite{fernandez2016mixture}), the Proportional Odds Model (POM) (\cite{matechou2016biclustering}), and several binary methods (\cite{pledger2014multivariate}), 
+providing the ability to fit models incorporating a wide array of covariates.
+
+In our research, the parameter training stage for the OSM, as facilitated by the ClustOrd package, is conducted following Fernandez's methodology (\cite{fernandez2016mixture}).
+
 \subsection{Prediction and Validation}
 
 After training, in the prediction stage the prediction will be applied in each row.
