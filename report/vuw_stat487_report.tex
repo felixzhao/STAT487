@@ -131,9 +131,20 @@ Clustering is a fundamental technique in the field of data analysis and machine 
 
 There are primarily two types of clustering: distance-based clustering and model-based clustering.
 
-1. \textbf{Distance-based Clustering}: This approach relies on the concept of similarity or distance between data points. The aim is to minimize the distance between data points within a cluster while maximizing the distance between data points in different clusters. Popular methods include K-means, hierarchical clustering, and DBSCAN, each using different metrics (e.g., Euclidean, Manhattan) to measure distance or similarity.
+1. \textbf{Distance-based Clustering}: 
 
-2. \textbf{Model-based Clustering}: Unlike distance-based methods, model-based clustering assumes that the data is generated from a mixture of finite distributions, where each component of the mixture represents a cluster. This approach tries to estimate the parameters of these distributions to optimize the fit between the model and the data. Model-based methods are particularly useful for complex data structures, including those with mixed types of data (numerical, categorical) or where the clusters have different sizes, shapes, or orientations.
+This approach relies on the concept of similarity or distance between data points. 
+The aim is to minimize the distance between data points within a cluster while maximizing the distance between data points in different clusters. 
+Popular methods include K-means (~\cite{macqueen1967some}), 
+hierarchical clustering (~\cite{johnson1967hierarchical}), and DBSCAN (~\cite{ester1996density}), 
+each using different metrics (e.g., Euclidean, Manhattan) to measure distance or similarity.
+
+2. \textbf{Model-based Clustering}: 
+
+Unlike distance-based methods, model-based clustering (~\cite{fraley2002model}) assumes that the data is generated from a mixture of finite distributions, 
+where each component of the mixture represents a cluster. 
+This approach tries to estimate the parameters of these distributions to optimize the fit between the model and the data. 
+Model-based methods are particularly useful for complex data structures, including those with mixed types of data (numerical, categorical) or where the clusters have different sizes, shapes, or orientations.
 
 Model-based clustering is often more suitable for ordinal data—data that contain natural, orderable categories. This is because ordinal data, which embody an inherent ranking or order (e.g., survey responses from "strongly agree" to "strongly disagree"), do not fit well with the distance metrics used in distance-based clustering, which treat distances between all pairs of categories as equal. Model-based clustering, on the other hand, can accommodate the ordinal nature by incorporating it into the model assumptions, allowing for a more nuanced understanding and grouping based on the inherent order of the data. This method can capture the ordinal information effectively, providing more meaningful and interpretable clusters for analysis.
 
@@ -208,7 +219,8 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
 
 \subsection{Proportional Odds model}
 
-The Proportional Odds model (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
+The Proportional Odds model which introduced by (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
+In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering})
 The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \begin{equation}
@@ -227,6 +239,7 @@ where:
 
 The Ordered Stereotype Regression Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
+In this work, we follow the methodology outlined by (~\cite{fernandez2016mixture})
 Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
 
 
