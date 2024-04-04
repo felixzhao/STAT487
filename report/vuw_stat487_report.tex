@@ -137,7 +137,7 @@ There are primarily two types of clustering: distance-based clustering and model
 
 Model-based clustering is often more suitable for ordinal data—data that contain natural, orderable categories. This is because ordinal data, which embody an inherent ranking or order (e.g., survey responses from "strongly agree" to "strongly disagree"), do not fit well with the distance metrics used in distance-based clustering, which treat distances between all pairs of categories as equal. Model-based clustering, on the other hand, can accommodate the ordinal nature by incorporating it into the model assumptions, allowing for a more nuanced understanding and grouping based on the inherent order of the data. This method can capture the ordinal information effectively, providing more meaningful and interpretable clusters for analysis.
 
-\section{History of Statistical based Ordinal Data Clustering}
+\section{History of model-based Ordinal Data Clustering}
 
 \subsection{Early Developments (2000--2010)}
 
@@ -166,7 +166,7 @@ Compare with previous work, Jacques and Biernacki's (~\cite{jacques2018model}) m
 
 \subsection{Compare with other clustering algorithm}
 
-Compared to tree based or distance based clustering algorithms, statistical based clustering algorithms demonstrate superior performance with ordinal data, particularly in scenarios involving multiclass and multioutput cases. 
+Compared to tree based or distance based clustering algorithms, model-based clustering algorithms demonstrate superior performance with ordinal data, particularly in scenarios involving multiclass and multioutput cases. 
 This advantage stems from two key factors: firstly, ordinal data do not presuppose equal distances between categories, a condition that distance-based methods often rely on. Secondly, ordinal data typically encompass only a few categories, which can limit the effectiveness of tree-based methods designed to partition data across a broader numerical range.
 
 
