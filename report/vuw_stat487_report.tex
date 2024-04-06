@@ -304,15 +304,13 @@ In the M-step, the algorithm maximizes the expected log-likelihood found in the 
 
 \subsubsection{E-step (Expectation Step)}
 
-During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $K$ components, based on the current estimates of the parameters.
+During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $G$ components, based on the current estimates of the parameters.
 
-For a mixture model, the posterior probability (also known as the responsibility) that component $k$ generates data point $x_i$ is calculated as:
+For a mixture model, the posterior probability (also known as the responsibility) that observation i originates in component g is calculated as:
 
 \begin{equation}
-\gamma(z_{ik}) = \frac{\pi_k f_k(x_i|\theta_k)}{\sum_{j=1}^{K} \pi_j f_j(x_i|\theta_j)}
+z_{ig} = \frac{\pi_g f_g(\mathbf{y_i}|\theta_g)}{\sum_{j=1}^{G} \pi_j f_j(\mathbf{y_i} \mid \theta_j)}
 \end{equation}
-
-where $\gamma(z_{ik})$ is the responsibility that component $k$ has for data point $i$.
 
 \subsubsection{M-step (Maximization Step)}
 
