@@ -227,7 +227,7 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
 The Proportional Odds model which introduced by (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
 In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering}).
 One way to model the clusters is to suppose that each cluster has an effect $\alpha_g$ which changes the probability of the value for one variable and  observation $i$ being in a particular category.
-The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
+If $y$ is one part of an observation that is a member of cluster g, then the model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \begin{equation}
 log\left(\frac{P(Y \leq k)}{P(Y > k)}\right) = \mu_k - \alpha_g
@@ -237,7 +237,7 @@ where:
 \begin{itemize}
     \item $P(Y \leq k)$ is the cumulative probability of $Y$ being in category $k$ or any category below $k$.
     \item $\mu_k$ is the intercept term for category $k$, which allows the log odds to vary across categories.
-    \item $\alpha_g$ represents the effects cluster $g$ and $C$ with clusters ({$g=1, 2, \ldots, G$}).
+    \item $\alpha_g$ represents the effects cluster $g$ with clusters ({$g=1, 2, \ldots, G$}).
     \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories.
 \end{itemize}
 
