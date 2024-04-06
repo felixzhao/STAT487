@@ -289,6 +289,7 @@ This constraint allows the model to adapt to the inherent ordering of categories
 % \subsubsection{Introduction to the EM Algorithm}
 The Expectation-Maximization (EM) algorithm is a powerful statistical tool for finding maximum likelihood estimates in models with latent variables. It consists of two main steps: the Expectation step (E-step) and the Maximization step (M-step).
 
+In the context of clustering within a finite mixture model, the EM algorithm considers cluster assignments as latent variables. 
 The EM algorithm for mixture models assumes that a set of latent variables $Z$ indicate which component of the mixture each observation originates from.
 
 During the E-step, the algorithm estimates the expected value of the log-likelihood function, with respect to the conditional distribution of the latent variables given the observed data and the current estimates of the parameters. This step can be formally expressed as follows:
@@ -340,32 +341,6 @@ The remaining parameters are updated using numerical optimization.
 % abc
 
 % \section{Expectation-Maximization Algorithm for Clustering in Finite Mixture Models}
-
-
-
-\subsection{EM Algorithm Sample for clustering}
-In the context of clustering within a finite mixture model, the EM algorithm considers cluster assignments as latent variables. 
-We will illustrate this concept using the Ordered Stereotype Regression Model as an example, demonstrating how the finite mixture model operates for clustering ordinal data with the EM Algorithm. 
-The goal is to maximize the observed data's likelihood under the mixture model.
-
-The E-step computes the posterior probabilities that an observation belongs to each cluster, given the current parameter estimates. 
-This can be expressed for a particular cluster \( k \) as follows:
-\begin{equation}
-P_{ig}(Y_{ig} = k) = \frac{e^{\mu_k + \phi_k \cdot \alpha_g}}{\sum_{j=1}^{K} e^{\mu_j + \phi_j \cdot \alpha_g}}
-\end{equation}
-where \( P_{ig} \) denotes the probability that the \( i \)-th observation in the \( g \)-th cluster is in cluster \( k \), \( \mu_k \) and \( \phi_k \) are the current estimates of the parameters for cluster \( k \), and \( \alpha_g \) represents the observed data.
-
-The M-step then updates the parameter $\mu_k, \phi_k$ and $\alpha_g$ estimates to maximize the likelihood given the posterior probabilities computed in the E-step. 
-The new parameter estimates for cluster \( k \) are computed as:
-\begin{equation}
-\Theta_{ig}^{(t+1)} = \frac{P_{ig}(Y_{ig} = k)}{\sum_{i=1}^{R} P_{ig}(Y_{ig} = k)}
-\end{equation}
-where \( i \) is the number of row observations, \( k \) number of the category and \( g \) number of the cluster.
-
-The algorithm iterates between these two steps until the change in the likelihood or the parameter estimates is below a pre-defined threshold, indicating convergence.
-
-% efg
-
 
 
 \section{Cluster Prediction for Ordinal Data}
