@@ -241,22 +241,22 @@ where:
     \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories.
 \end{itemize}
 
-\subsection{Ordered Stereotype Regression Model}
+\subsection{Ordered Stereotype Model}
 
-The Ordered Stereotype Regression Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
+The Ordered Stereotype Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
 In this work, we follow the methodology outlined by (~\cite{fernandez2016mixture})
-Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
+Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) from cluster $g$, the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
 
 
-The logit for category $k$ is then:
+The model for category $k$ is then:
 \begin{equation}
-log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
+log\left(\frac{P(Y = k)}{P(Y = 1)} \mid i \in g\right) = \mu_k + \phi_k \alpha_g
 \end{equation}
 
 where $\mu_k$ is the intercept for category $k$, 
-and $\alpha$ represents the effects cluster $g$, where $g \in C$.
-parameters $\phi$, which must be arranged in an ordered sequence from 
+and $\alpha$ represents the effect of cluster $g$.
+Parameters $\phi$ must be arranged in an ordered sequence from 
 $0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$ 
 This constraint allows the model to adapt to the inherent ordering of categories, ensuring the effects across categories follow a common, scaled pattern.
 
