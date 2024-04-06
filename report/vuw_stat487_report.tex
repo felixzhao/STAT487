@@ -351,9 +351,9 @@ In our study, we will concentrate on raw clusters with (Ordered Stereotype Model
 
 \subsection{Data Structuring and Model Training}
 
-The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $m$ observations for adjusting model parameters, while the subsequent observations ($y_{m+1}, \dots, y_n$) make up the test set for evaluating the model.
+The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $t$ observations for adjusting model parameters, while the subsequent observations ($y_{t+1}, \dots, y_n$) make up the test set for evaluating the model.
 
-The Expectation-Maximization (EM) algorithm is used to refine the parameters of the finite mixture model using the training data. Here, $k$ represents the number of ordinal categories, and $g$ denotes the number of clusters. The aggregate probability for each category, summed across all clusters, must equal one.
+The Expectation-Maximization (EM) algorithm is used to refine the parameters of the finite mixture model using the training data. Here, $K$ represents the number of ordinal categories, and $G$ denotes the number of clusters. The aggregate probability for each category, summed across all clusters, must equal one.
 
 During the training phase, the M-step of the EM algorithm updates the parameters, $\mu_k$ and $\phi_k$ for each category, and $\alpha_g$ for each cluster.
 
