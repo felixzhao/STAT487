@@ -116,7 +116,6 @@ Continuous numerical data, with its quantitative nature, allows for an infinite 
 The limitations of ordinal data stem from its inability to quantify the exact magnitude of differences between categories, a factor that restricts the application of parametric statistical methods. This constraint necessitates reliance on non-parametric methods, focusing on medians and modes rather than means and standard deviations, thereby offering a less detailed analysis (~\cite{Conover1999}). 
 For instance, in Likert scale responses commonly used in surveys, the ordinal nature of data precludes meaningful calculations of averages or differences between responses, limiting the depth of analysis that can be achieved (~\cite{Likert1932}).
 
-% task 7
 Comparatively, continuous numerical data's capacity for precise measurement and the application of a broader range of statistical analyses enables a more detailed and accurate exploration of phenomena. 
 This capability is contingent upon the availability of continuous numerical results, which may not always be feasible. The nature of the data collectible in certain research scenarios—such as measuring opinions, attitudes, or perceptions—often necessitates the use of ordinal data, due to the challenges associated with obtaining continuous measurements in these contexts. For instance, eliciting responses on a continuous percentage scale from 0 to 100 can be impractical when assessing subjective experiences or preferences. Hence, the decision to utilize ordinal data over continuous numerical data is not solely a matter of choice in research design and analysis but is also influenced by the practicalities of what data can realistically be gathered. This consideration is crucial for ensuring the validity and relevance of research findings, highlighting the importance of aligning data collection methods with the specific circumstances and constraints of the study.
 
@@ -189,20 +188,26 @@ Finite mixture models have emerged as a versatile and powerful statistical tool,
 
 The Finite mixture model is defined as:
 
-Given observations $Y = \{y_{i}\}$ we may wish to cluster the rows,
-each m-dimensional row $y_i$ $(i = 1, \dots , n) $ is assumed drawn from component $(g_1, \dots, g_G)$ finite mixture
+Given $n$ observations, with $m$ dimension.
+\begin{equation}
+Y = \{y_{ij} \in {1, \dots, q}\}, 
+i = 1, \dots, n, j = 1, \dots, m. 
+\end{equation}
+where, i is 
+In row clustering, we may wish to cluster the rows $i$.
+Each m-dimensional row $y_i$ is assumed drawn from a single component g in the finite mixture
 \begin{equation}
 % p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\bm{\theta}_g)
-p(y_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(y_i|\boldsymbol{\theta}_g)
+p(y_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(y_i|\boldsymbol{\omega}_g)
 \end{equation}
 where:
 \begin{itemize}
-    \item $p(y_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
+    \item $p(y_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $y_i$.
     \item $G$ is the total number of component distributions in the mixture.
     \item $\pi_g$ represents the mixing proportion of the $g$th component, satisfying $0 \leq \pi_g \leq 1$ and $\sum_{g=1}^{G} \pi_g = 1$.
-    \item $f(y_i|\boldsymbol{\theta})$ is the probability density function (pdf) or probability mass function (pmf) of the $g$th component distribution evaluated at $x_i$.
-    \item $\boldsymbol{\theta}$ denotes the parameter vector of the $g$th component distribution.
-    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_G\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_G\}$.
+    \item $f(y_i|\boldsymbol{\omega_g})$ is the probability density function (pdf) or probability mass function (pmf) of the $g$th component distribution evaluated at $y_i$.
+    \item $\boldsymbol{\omega_g}$ denotes the parameter vector of the $g$th component distribution.
+    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_G\}$ and the parameters of the component distributions $\{\omega_1, \ldots, \omega_G\}$.
 \end{itemize}
 
 The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
