@@ -289,6 +289,8 @@ This constraint allows the model to adapt to the inherent ordering of categories
 % \subsubsection{Introduction to the EM Algorithm}
 The Expectation-Maximization (EM) algorithm is a powerful statistical tool for finding maximum likelihood estimates in models with latent variables. It consists of two main steps: the Expectation step (E-step) and the Maximization step (M-step).
 
+The EM algorithm for mixture models assumes that a set of latent variables $Z$ indicate which component of the mixture each observation originates from.
+
 During the E-step, the algorithm estimates the expected value of the log-likelihood function, with respect to the conditional distribution of the latent variables given the observed data and the current estimates of the parameters. This step can be formally expressed as follows:
 \begin{equation}
 Q(\theta | \theta^{(t)}) = E_{Z|X,\theta^{(t)}}[\log L(\theta; X, Z)]
