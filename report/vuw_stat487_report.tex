@@ -309,19 +309,21 @@ During the Expectation step, the EM algorithm computes the expected value of the
 For a mixture model, the posterior probability (also known as the responsibility) that observation i originates in component g is calculated as:
 
 \begin{equation}
-z_{ig} = \frac{\pi_g f_g(\mathbf{y_i}|\theta_g)}{\sum_{j=1}^{G} \pi_j f_j(\mathbf{y_i} \mid \theta_j)}
+Z_{ig} = \frac{\pi_g f_g(\mathbf{y_i}|\theta_g)}{\sum_{j=1}^{G} \pi_j f_j(\mathbf{y_i} \mid \theta_j)}
 \end{equation}
 
 \subsubsection{M-step (Maximization Step)}
 
-In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood found in the E-step. 
+In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood using the latest latent values $Z_{ig}$ from the E step. 
 This involves updating the estimates of both the parameters of the component distributions and the mixing coefficients.
 
 Update the mixing coefficients:
 
 \begin{equation}
-\pi_k^{new} = \frac{1}{N} \sum_{i=1}^{N} \gamma(z_{ik})
+\pi_g^{new} = \frac{1}{N} \sum_{i=1}^{N} Z_{ig}
 \end{equation}
+
+The remaining parameters are updated using numerical optimization.
 
 % 2. Update the parameters of the component distributions ($\theta_k$), which depends on the form of the distribution. For example, in a Gaussian mixture model, the mean and covariance of each Gaussian component are updated as follows:
 
