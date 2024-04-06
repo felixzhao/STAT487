@@ -225,7 +225,8 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
 \subsection{Proportional Odds model}
 
 The Proportional Odds model which introduced by (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
-In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering})
+In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering}).
+One way to model the clusters is to suppose that each cluster has an effect $\alpha_g$ which changes the probability of the value for one variable and  observation $i$ being in a particular category.
 The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \begin{equation}
@@ -264,8 +265,7 @@ This constraint allows the model to adapt to the inherent ordering of categories
 % Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
 % This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
 
-One way to model the clusters is to suppose that each cluster has an 
-  effect $\alpha_g$ which changes the probability of the value for one variable and  observation $i$ being in a particular category.
+
   
 
 % 123
