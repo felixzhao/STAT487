@@ -116,7 +116,6 @@ Continuous numerical data, with its quantitative nature, allows for an infinite 
 The limitations of ordinal data stem from its inability to quantify the exact magnitude of differences between categories, a factor that restricts the application of parametric statistical methods. This constraint necessitates reliance on non-parametric methods, focusing on medians and modes rather than means and standard deviations, thereby offering a less detailed analysis (~\cite{Conover1999}). 
 For instance, in Likert scale responses commonly used in surveys, the ordinal nature of data precludes meaningful calculations of averages or differences between responses, limiting the depth of analysis that can be achieved (~\cite{Likert1932}).
 
-% task 7
 Comparatively, continuous numerical data's capacity for precise measurement and the application of a broader range of statistical analyses enables a more detailed and accurate exploration of phenomena. 
 This capability is contingent upon the availability of continuous numerical results, which may not always be feasible. The nature of the data collectible in certain research scenarios—such as measuring opinions, attitudes, or perceptions—often necessitates the use of ordinal data, due to the challenges associated with obtaining continuous measurements in these contexts. For instance, eliciting responses on a continuous percentage scale from 0 to 100 can be impractical when assessing subjective experiences or preferences. Hence, the decision to utilize ordinal data over continuous numerical data is not solely a matter of choice in research design and analysis but is also influenced by the practicalities of what data can realistically be gathered. This consideration is crucial for ensuring the validity and relevance of research findings, highlighting the importance of aligning data collection methods with the specific circumstances and constraints of the study.
 
@@ -189,20 +188,26 @@ Finite mixture models have emerged as a versatile and powerful statistical tool,
 
 The Finite mixture model is defined as:
 
-Given observations $Y = \{y_{i}\}$ we may wish to cluster the rows,
-each m-dimensional row $y_i$ $(i = 1, \dots , n) $ is assumed drawn from component $(g_1, \dots, g_G)$ finite mixture
+Given $n$ observations, with $m$ dimension.
+\begin{equation}
+Y = \{y_{ij} \in {1, \dots, q}\}, 
+i = 1, \dots, n, j = 1, \dots, m. 
+\end{equation}
+where, i is 
+In row clustering, we may wish to cluster the rows $i$.
+Each m-dimensional row $y_i$ is assumed drawn from a single component g in the finite mixture
 \begin{equation}
 % p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\bm{\theta}_g)
-p(y_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(y_i|\boldsymbol{\theta}_g)
+p(y_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(y_i|\boldsymbol{\omega}_g)
 \end{equation}
 where:
 \begin{itemize}
-    \item $p(y_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $x_i$.
+    \item $p(y_i|\mathbf{\Theta})$ denotes the overall mixture model's density or mass function for observation $y_i$.
     \item $G$ is the total number of component distributions in the mixture.
     \item $\pi_g$ represents the mixing proportion of the $g$th component, satisfying $0 \leq \pi_g \leq 1$ and $\sum_{g=1}^{G} \pi_g = 1$.
-    \item $f(y_i|\boldsymbol{\theta})$ is the probability density function (pdf) or probability mass function (pmf) of the $g$th component distribution evaluated at $x_i$.
-    \item $\boldsymbol{\theta}$ denotes the parameter vector of the $g$th component distribution.
-    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_G\}$ and the parameters of the component distributions $\{\theta_1, \ldots, \theta_G\}$.
+    \item $f(y_i|\boldsymbol{\omega_g})$ is the probability density function (pdf) or probability mass function (pmf) of the $g$th component distribution evaluated at $y_i$.
+    \item $\boldsymbol{\omega_g}$ denotes the parameter vector of the $g$th component distribution.
+    \item $\mathbf{\Theta}$ symbolizes the complete set of parameters for the mixture model, including both the mixing proportions $\{\pi_1, \ldots, \pi_G\}$ and the parameters of the component distributions $\{\omega_1, \ldots, \omega_G\}$.
 \end{itemize}
 
 The significance of finite mixture models is vividly illustrated in Figure~\ref{fig:trend}, which showcases a robust upward trajectory in related publications. This trend not only reflects the growing academic and practical interest in these models but also underscores their evolving sophistication and broadening applicability. From the early advancements in maximizing likelihood estimation through algorithms like EM, as pioneered by McLachlan in 2000, to the more recent developments in handling a variety of data types, including binary, count, and ordinal data, finite mixture models have continuously adapted and expanded their scope.
@@ -220,8 +225,9 @@ The significance of finite mixture models is vividly illustrated in Figure~\ref{
 \subsection{Proportional Odds model}
 
 The Proportional Odds model which introduced by (~\cite{mccullagh1980regression}) is another approach which defined for an ordinal response variable $Y$ with $K$ ordered categories ($k=1, 2, \ldots, K$). 
-In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering})
-The model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
+In this work, we follow the methodology outlined by (~\cite{matechou2016biclustering}).
+One way to model the clusters is to suppose that each cluster has an effect $\alpha_g$ which changes the probability of the value for one variable and  observation $i$ being in a particular category.
+If $y$ is one part of an observation that is a member of cluster g, then the model expresses the cumulative log odds of $Y$ being less than or equal to a category $k$ as follows:
 
 \begin{equation}
 log\left(\frac{P(Y \leq k)}{P(Y > k)}\right) = \mu_k - \alpha_g
@@ -231,26 +237,26 @@ where:
 \begin{itemize}
     \item $P(Y \leq k)$ is the cumulative probability of $Y$ being in category $k$ or any category below $k$.
     \item $\mu_k$ is the intercept term for category $k$, which allows the log odds to vary across categories.
-    \item $\alpha_g$ represents the effects cluster $g$ and $C$ with clusters ({$g=1, 2, \ldots, G$}).
+    \item $\alpha_g$ represents the effects cluster $g$ with clusters ({$g=1, 2, \ldots, G$}).
     \item The model assumes that the effect of the predictors on the log odds of being in a lower versus a higher category is proportional across all categories.
 \end{itemize}
 
-\subsection{Ordered Stereotype Regression Model}
+\subsection{Ordered Stereotype Model}
 
-The Ordered Stereotype Regression Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
+The Ordered Stereotype Model  (~\cite{anderson1984regression}) is a statistical approach designed to analyze ordinal dependent variables, where the outcomes are categories with a natural order but not a quantifiable difference between them.
 
 In this work, we follow the methodology outlined by (~\cite{fernandez2016mixture})
-Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
+Given an ordinal response variable $Y$ with categories ($k=1, 2, \ldots, K$) from cluster $g$, the probability of $Y$ falling into the $k$th category, is denoted as $P(Y = k)$.
 
 
-The logit for category $k$ is then:
+The model for category $k$ is then:
 \begin{equation}
-log\left(\frac{P(Y = k)}{P(Y = 1)}\right) = \mu_k + \phi_k \alpha_g
+log\left(\frac{P(Y = k)}{P(Y = 1)} \mid i \in g\right) = \mu_k + \phi_k \alpha_g
 \end{equation}
 
 where $\mu_k$ is the intercept for category $k$, 
-and $\alpha$ represents the effects cluster $g$, where $g \in C$.
-parameters $\phi$, which must be arranged in an ordered sequence from 
+and $\alpha$ represents the effect of cluster $g$.
+Parameters $\phi$ must be arranged in an ordered sequence from 
 $0 = \phi_1 \leq \phi_2 \leq \ldots \leq \phi_K = 1.$ 
 This constraint allows the model to adapt to the inherent ordering of categories, ensuring the effects across categories follow a common, scaled pattern.
 
@@ -259,8 +265,7 @@ This constraint allows the model to adapt to the inherent ordering of categories
 % Stereotype model is unconstrained, $\phi$ add restricts to make it works for ordinal data.
 % This allows the effects to vary across categories but constrains them to follow a scaled version of a common pattern.
 
-One way to model the clusters is to suppose that each cluster has an 
-  effect $\alpha_g$ which changes the probability of the value for one variable and  observation $i$ being in a particular category.
+
   
 
 % 123
@@ -284,6 +289,9 @@ One way to model the clusters is to suppose that each cluster has an
 % \subsubsection{Introduction to the EM Algorithm}
 The Expectation-Maximization (EM) algorithm is a powerful statistical tool for finding maximum likelihood estimates in models with latent variables. It consists of two main steps: the Expectation step (E-step) and the Maximization step (M-step).
 
+In the context of clustering within a finite mixture model, the EM algorithm considers cluster assignments as latent variables. 
+The EM algorithm for mixture models assumes that a set of latent variables $Z$ indicate which component of the mixture each observation originates from.
+
 During the E-step, the algorithm estimates the expected value of the log-likelihood function, with respect to the conditional distribution of the latent variables given the observed data and the current estimates of the parameters. This step can be formally expressed as follows:
 \begin{equation}
 Q(\theta | \theta^{(t)}) = E_{Z|X,\theta^{(t)}}[\log L(\theta; X, Z)]
@@ -297,26 +305,26 @@ In the M-step, the algorithm maximizes the expected log-likelihood found in the 
 
 \subsubsection{E-step (Expectation Step)}
 
-During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $K$ components, based on the current estimates of the parameters.
+During the Expectation step, the EM algorithm computes the expected value of the log likelihood function, with respect to the conditional distribution of the latent variables given the observed data under the current estimate of the parameters. This step involves calculating the posterior probabilities that a given data point belongs to each of the $G$ components, based on the current estimates of the parameters.
 
-For a mixture model, the posterior probability (also known as the responsibility) that component $k$ generates data point $x_i$ is calculated as:
+For a mixture model, the posterior probability (also known as the responsibility) that observation i originates in component g is calculated as:
 
 \begin{equation}
-\gamma(z_{ik}) = \frac{\pi_k f_k(x_i|\theta_k)}{\sum_{j=1}^{K} \pi_j f_j(x_i|\theta_j)}
+Z_{ig} = \frac{\pi_g f_g(\mathbf{y_i}|\theta_g)}{\sum_{j=1}^{G} \pi_j f_j(\mathbf{y_i} \mid \theta_j)}
 \end{equation}
-
-where $\gamma(z_{ik})$ is the responsibility that component $k$ has for data point $i$.
 
 \subsubsection{M-step (Maximization Step)}
 
-In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood found in the E-step. 
+In the Maximization step, the EM algorithm updates the parameters of the model to maximize the expected log likelihood using the latest latent values $Z_{ig}$ from the E step. 
 This involves updating the estimates of both the parameters of the component distributions and the mixing coefficients.
 
 Update the mixing coefficients:
 
 \begin{equation}
-\pi_k^{new} = \frac{1}{N} \sum_{i=1}^{N} \gamma(z_{ik})
+\pi_g^{new} = \frac{1}{N} \sum_{i=1}^{N} Z_{ig}
 \end{equation}
+
+The remaining parameters are updated using numerical optimization.
 
 % 2. Update the parameters of the component distributions ($\theta_k$), which depends on the form of the distribution. For example, in a Gaussian mixture model, the mean and covariance of each Gaussian component are updated as follows:
 
@@ -335,66 +343,44 @@ Update the mixing coefficients:
 % \section{Expectation-Maximization Algorithm for Clustering in Finite Mixture Models}
 
 
-
-\subsection{EM Algorithm Sample for clustering}
-In the context of clustering within a finite mixture model, the EM algorithm considers cluster assignments as latent variables. 
-We will illustrate this concept using the Ordered Stereotype Regression Model as an example, demonstrating how the finite mixture model operates for clustering ordinal data with the EM Algorithm. 
-The goal is to maximize the observed data's likelihood under the mixture model.
-
-The E-step computes the posterior probabilities that an observation belongs to each cluster, given the current parameter estimates. 
-This can be expressed for a particular cluster \( k \) as follows:
-\begin{equation}
-P_{ig}(Y_{ig} = k) = \frac{e^{\mu_k + \phi_k \cdot \alpha_g}}{\sum_{j=1}^{K} e^{\mu_j + \phi_j \cdot \alpha_g}}
-\end{equation}
-where \( P_{ig} \) denotes the probability that the \( i \)-th observation in the \( g \)-th cluster is in cluster \( k \), \( \mu_k \) and \( \phi_k \) are the current estimates of the parameters for cluster \( k \), and \( \alpha_g \) represents the observed data.
-
-The M-step then updates the parameter $\mu_k, \phi_k$ and $\alpha_g$ estimates to maximize the likelihood given the posterior probabilities computed in the E-step. 
-The new parameter estimates for cluster \( k \) are computed as:
-\begin{equation}
-\Theta_{ig}^{(t+1)} = \frac{P_{ig}(Y_{ig} = k)}{\sum_{i=1}^{R} P_{ig}(Y_{ig} = k)}
-\end{equation}
-where \( i \) is the number of row observations, \( k \) number of the category and \( g \) number of the cluster.
-
-The algorithm iterates between these two steps until the change in the likelihood or the parameter estimates is below a pre-defined threshold, indicating convergence.
-
-% efg
-
-
-
 \section{Cluster Prediction for Ordinal Data}
 
 Finite mixture models, combined with ordered stereotype regression, offer a technique for cluster prediction in ordinal data analysis. This method posits that a population can be probabilistically segmented into more homogeneous clusters, potentially enhancing prediction accuracy.
 
-In our study, we will concentrate on raw clusters with (Ordered Stereotype Regression Model) OSRM as an example to demonstrate our prediction method. It is feasible to apply this approach to other types, such as column clusters, or to models like POM.
+In our study, we will concentrate on row clusters with (Ordered Stereotype Model) OSM as an example to demonstrate our prediction method. It is feasible to apply this approach to other types, such as column clusters, or to models like POM.
 
 \subsection{Data Structuring and Model Training}
 
-The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $m$ observations for adjusting model parameters, while the subsequent observations ($y_{m+1}, \dots, y_n$) make up the test set for evaluating the model.
+The observed data ($Y$) is divided into a training set ($Y'$) and a test set ($Y''$). The training set comprises the first $t$ observations for adjusting model parameters, while the subsequent observations ($y_{t+1}, \dots, y_n$) make up the test set for evaluating the model.
 
-The Expectation-Maximization (EM) algorithm is used to refine the parameters of the finite mixture model using the training data. Here, $k$ represents the number of ordinal categories, and $g$ denotes the number of clusters. The aggregate probability for each category, summed across all clusters, must equal one.
+The Expectation-Maximization (EM) algorithm is used to refine the parameters of the finite mixture model using the training data. Here, $K$ represents the number of ordinal categories, and $G$ denotes the number of clusters. The aggregate probability for each category, summed across all clusters, must equal one.
 
 During the training phase, the M-step of the EM algorithm updates the parameters, $\mu_k$ and $\phi_k$ for each category, and $\alpha_g$ for each cluster.
 
 Upon completion of the EM algorithm, we obtain their estimates $\hat{\mu}_k$, $\hat{\phi}_k$, and $\hat{\alpha}_g$, which are utilized for cluster prediction.
 
-To achieve our objectives, the implementation will utilize the "ClustOrd" package (\cite{clustord2024}), 
+To achieve our objectives, the implementation will utilize the "clustord" package (\cite{clustord2024}), 
 developed by the School of Mathematics and Statistics at Victoria University of Wellington. 
 This package integrates the Ordered Stereotype Model (OSM) (\cite{fernandez2016mixture}), the Proportional Odds Model (POM) (\cite{matechou2016biclustering}), and several binary methods (\cite{pledger2014multivariate}), 
-providing the ability to fit models incorporating a wide array of covariates.
+providing the ability to fit clustering models incorporating a wide array of covariates.
 
-In our research, the parameter training stage for the OSM, as facilitated by the ClustOrd package, is conducted following Fernandez's methodology (\cite{fernandez2016mixture}).
+In our research, the parameter training stage for the OSM, as facilitated by the clustord package, is conducted following Fernandez's methodology (\cite{fernandez2016mixture}).
 
 \subsection{Prediction and Validation}
 
-After training, in the prediction stage the prediction will be applied in each row.
+After training, in the prediction stage the prediction will be applied in each row of the new data.
 
-the posterior probability of category k of row with cluster g is:
+The posterior probability of row $i$ being in cluster g is:
+
+% \begin{equation}
+% PP_irg = \sum_{L}^{j=1} e^{\mu_k + \phi_k \cdot \alpha_g}
+% \end{equation}
 
 \begin{equation}
-PP_irg = \sum_{L}^{j=1} e^{\mu_k + \phi_k \cdot \alpha_g}
+  \hat{Z}_{ig} = \frac{\hat{\pi}_g f_g(\mathbf{y_i}|\hat{\theta}_g)}{\sum_{j=1}^{G} \hat{\pi}_j f_j(\mathbf{y_i} \mid \hat{\theta}_j)}
 \end{equation}
 
-Then, the prediction of the cluster of row would be maximum $PP_irg$ of cluster g of the row.
+Then, the prediction of the cluster of row would be maximum $\hat{Z}_{ig}$ over all clusters g.
 
 The model's accuracy is measured by how well the predicted clusters match the actual test data classifications.
 
@@ -430,7 +416,7 @@ The predictive model can also be applied to future observations ($Y'''$). Using 
 % The 2016 iteration of the survey witnessed participation from employees across 11 public sector entities, boasting a response rate of 53\% and culminating in 3,883 valid responses. This dataset, encompassing individual responses, the survey instrument, and a summary of results, is disseminated under the Creative Commons Attribution 3.0 Australia license, providing a rich resource for analysis and application of the discussed predictive clustering approach.
 
 
-\subsection{Future Application Context and Dataset Plans}
+\subsection{Future Validation of Predictive Clustering Method and Dataset Plans}
 
 In the future, we aim to validate the effectiveness of our cluster prediction method by planning its application to the Public Sector Commission WA Employee Perception Survey 2016. 
 This particular survey, conducted by the Public Sector Commission of Western Australia, is a rich resource that offers insights into various pivotal workplace factors, including leadership dynamics, communication efficacy, and work-life balance. 
@@ -438,6 +424,8 @@ Its findings are critical for understanding the nuances of organizational cultur
 
 The 2016 survey edition attracted participation from employees across 11 public sector entities, achieving a response rate of 53\% and collecting 3,883 valid responses. 
 This comprehensive dataset includes individual responses, the survey instrument, and a summary of results. It is available under the Creative Commons Attribution 3.0 Australia license, making it an ideal candidate for analyzing and applying our discussed predictive clustering approach.
+
+An integral aspect of our future work will also involve identifying and selecting the most appropriate evaluation metrics for assessing the efficacy of our predictive clustering method. While traditional clustering evaluation metrics, such as silhouette score, Davies–Bouldin index, or Caliński-Harabasz index, may provide initial insights, the unique characteristics of our problem may necessitate the investigation of novel metrics tailored to our specific objectives. 
 
 It is important to clarify that, as of now, we have not yet tested our method on this dataset due to constraints on our timeline. This step remains a crucial part of our research agenda, and we intend to pursue it as a future work direction. 
 Our anticipation is that the application of our predictive clustering method to this dataset will not only showcase its utility but also provide actionable insights for enhancing public sector workplace environments.

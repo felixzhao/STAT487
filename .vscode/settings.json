@@ -1,0 +1,15 @@
+{
+    // Sets LaTeX Workshop to build your LaTeX project on save.
+    // Enables word wrapping in the editor to the wordWrapColumn setting.
+    // Sets the word wrap column to 80 characters for all files.
+    // Specifies that for LaTeX files ([latex]), the default formatter should be Prettier, and it should format on save.
+    // Sets the Prettier print width to 80 characters, which affects how code is formatted on save.
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "[latex]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "prettier.printWidth": 80,
+}
