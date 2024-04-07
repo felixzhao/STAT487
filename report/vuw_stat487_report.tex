@@ -368,15 +368,19 @@ In our research, the parameter training stage for the OSM, as facilitated by the
 
 \subsection{Prediction and Validation}
 
-After training, in the prediction stage the prediction will be applied in each row.
+After training, in the prediction stage the prediction will be applied in each row of the new data.
 
-the posterior probability of category k of row with cluster g is:
+The posterior probability of row $i$ being in cluster g is:
+
+% \begin{equation}
+% PP_irg = \sum_{L}^{j=1} e^{\mu_k + \phi_k \cdot \alpha_g}
+% \end{equation}
 
 \begin{equation}
-PP_irg = \sum_{L}^{j=1} e^{\mu_k + \phi_k \cdot \alpha_g}
+  \hat{Z}_{ig} = \frac{\hat{\pi}_g f_g(\mathbf{y_i}|\hat{\theta}_g)}{\sum_{j=1}^{G} \hat{\pi}_j f_j(\mathbf{y_i} \mid \hat{\theta}_j)}
 \end{equation}
 
-Then, the prediction of the cluster of row would be maximum $PP_irg$ of cluster g of the row.
+Then, the prediction of the cluster of row would be maximum $\hat{Z}_{ig}$ over all clusters g.
 
 The model's accuracy is measured by how well the predicted clusters match the actual test data classifications.
 
