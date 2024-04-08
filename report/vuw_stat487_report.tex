@@ -186,16 +186,22 @@ This advantage stems from two key factors: firstly, ordinal data do not presuppo
 
 Finite mixture models have emerged as a versatile and powerful statistical tool, garnering increasing attention across various scientific and research disciplines. These models, predicated on the assumption that observed data arise from a blend of several probability distributions, each representing a distinct subpopulation, have revolutionized our approach to understanding complex data structures. The designation ``finite'' in finite mixture models is pivotal, indicating the specific, but variable, number of components or subgroups within the data. This finite aspect offers a balance between model complexity and interpretability, allowing for detailed yet manageable analysis of diverse datasets.
 
-The Finite mixture model is defined as:
+% The Finite mixture model is defined as:
 
-Given $n$ observations, with $m$ dimension.
+Let us suppose we have $n$ observations, each of dimension $m$:
+% Given $n$ observations, with $m$ dimension.
 \begin{equation}
 Y = \{y_{ij} \in {1, \dots, q}\}, 
 i = 1, \dots, n, j = 1, \dots, m. 
 \end{equation}
-where, i is 
-In row clustering, we may wish to cluster the rows $i$.
-Each m-dimensional row $y_i$ is assumed drawn from a single component g in the finite mixture
+% where, i is 
+% In row clustering, we may wish to cluster the rows $i$.
+% Each m-dimensional row $y_i$ is assumed drawn from a single component g in the finite mixture
+
+We may then want to cluster the rows, $i$. This can be modelled using a
+finite mixture, which is defined such that each m-dimensional row $y_i$ is
+assumed to be drawn from a single component $g$ in the finite mixture:
+
 \begin{equation}
 % p(x_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(x_i|\bm{\theta}_g)
 p(y_i|\mathbf{\Theta}) = \sum_{g=1}^{G} \pi_g f(y_i|\boldsymbol{\omega}_g)
